@@ -1,0 +1,59 @@
+﻿<Window x:Class="MedicalManagementSystem.View.HomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customcontrols="clr-namespace:MedicalManagementSystem.CustomControls"
+        xmlns:ViewModel="clr-namespace:MedicalManagementSystem.ViewModel"
+        xmlns:local="clr-namespace:MedicalManagementSystem.View"
+        Background="#eee"
+        mc:Ignorable="d"
+        Title="HomeView" Height="700" Width="1300">
+
+    <Window.DataContext>
+        <ViewModel:HomeViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
+            <local:DashboardView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type ViewModel:UserManageModel}">
+            <local:UserManageView/>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Border>
+        <Grid>
+        
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            
+            <!-- SIDEBAR -->
+            <Grid Grid.Row="0" Grid.Column="0"
+              Background="#333333">
+                <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center">
+                    <customcontrols:IconButton Margin="10,0,10,0" TextButton="Dashboard" ImagePath="../Images/home.png" Command="{Binding DashboardCommand}"/>
+                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Pianificazione" ImagePath="../Images/calendar.png"/>
+                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Prenotazioni" ImagePath="../Images/bookings.png" Command="{Binding UserManageCommand}"/>
+                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Gestione utenti" ImagePath="../Images/user.png" Command="{Binding UserManageCommand}"/>
+                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Eventi" ImagePath="../Images/message.png"/>
+                </StackPanel>
+
+                <customcontrols:IconButton VerticalAlignment="Bottom" Margin="10,0,10,10" TextButton="Impostazioni" ImagePath="../Images/settings.png"/>
+            </Grid>
+
+
+            <!-- MainView-->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <ContentPresenter Content="{Binding CurrentViewModel}" Grid.RowSpan="5"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
