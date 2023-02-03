@@ -87,7 +87,6 @@
                 </Trigger>
             </Style.Triggers>
 
-
             <Style.Setters>
                 <Setter Property="Background" Value="#fff"/>
 
@@ -103,5 +102,6 @@
             </Style.Setters>
             
         </Style>
+       
     </Application.Resources>
 </Application>

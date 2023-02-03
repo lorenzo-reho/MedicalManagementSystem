@@ -31,3 +31,5 @@ C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\Medica
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\DashboardView.baml
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\UserManageView.g.cs
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\UserManageView.baml
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\SearchFilterView.g.cs
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\SearchFilterView.baml

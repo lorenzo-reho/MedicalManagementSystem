@@ -1,4 +1,6 @@
-﻿using MedicalManagementSystem.View;
+﻿using MedicalManagementSystem.Model;
+using MedicalManagementSystem.Repository;
+using MedicalManagementSystem.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace MedicalManagementSystem.ViewModel
 
         public HomeViewModel() {
             CurrentViewModel = new UserManageModel();
+
+
             UserManageCommand = new CommandViewModel(ExecuteUserManageCommand, CanExecuteUserManageCommand);
             DashboardCommand = new CommandViewModel(ExecuteDashboardCommand, CanExecuteDashboardCommand);
         }
