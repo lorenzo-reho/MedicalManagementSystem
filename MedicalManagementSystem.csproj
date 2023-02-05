@@ -70,17 +70,22 @@
     <Compile Include="Model\BaseUserModel.cs" />
     <Compile Include="Model\DoctorModel.cs" />
     <Compile Include="Model\PatientModel.cs" />
+    <Compile Include="Model\StaffModel.cs" />
     <Compile Include="Repository\CryptoRepository.cs" />
     <Compile Include="Repository\DBRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CommandViewModel.cs" />
+    <Compile Include="ViewModel\CreateNewUserViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\SearchFilterViewModel.cs" />
     <Compile Include="ViewModel\UserManageModel.cs" />
+    <Compile Include="View\CreateNewUserView.xaml.cs">
+      <DependentUpon>CreateNewUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -116,6 +121,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CreateNewUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

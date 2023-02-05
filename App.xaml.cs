@@ -22,7 +22,6 @@ namespace MedicalManagementSystem
 
             HomeView homeView = new HomeView();
             homeView.Show();
-            
             /*
             LoginView loginView = new LoginView();
             

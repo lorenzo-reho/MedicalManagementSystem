@@ -42,7 +42,7 @@
                     <customcontrols:IconButton Margin="10,0,10,0" TextButton="Dashboard" ImagePath="../Images/home.png" Command="{Binding DashboardCommand}"/>
                     <customcontrols:IconButton Margin="10,10,10,0" TextButton="Pianificazione" ImagePath="../Images/calendar.png"/>
                     <customcontrols:IconButton Margin="10,10,10,0" TextButton="Prenotazioni" ImagePath="../Images/bookings.png" Command="{Binding UserManageCommand}"/>
-                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Gestione utenti" ImagePath="../Images/user.png" Command="{Binding UserManageCommand}"/>
+                    <customcontrols:IconButton Margin="10,10,10,0" TextButton="Gestione pazienti" ImagePath="../Images/user.png" Command="{Binding UserManageCommand}"/>
                     <customcontrols:IconButton Margin="10,10,10,0" TextButton="Eventi" ImagePath="../Images/message.png"/>
                 </StackPanel>
 

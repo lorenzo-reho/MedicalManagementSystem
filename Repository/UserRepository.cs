@@ -18,7 +18,7 @@ namespace MedicalManagementSystem.Repository
             /*
                 Il motivo using dell'istruzione è garantire che l'oggetto venga eliminato non appena esce dall'ambito e non richiede codice esplicito per garantire che ciò accada.
              */
-            String queryString = "SELECT CodiceFiscale, email, username, Ruolo, password FROM Utenti WHERE (username=@uname OR email=@uname) AND password=@password";
+            String queryString = "SELECT CodiceFiscale, email, username, Ruolo, password FROM Utenti WHERE (username=@uname OR email=@uname) AND password=@password AND (Ruolo = 'Admin' OR Ruolo = 'Dottore' OR Ruolo = 'Segreteria')";
             String codiceFiscale = null;
             String ruolo = null;
 
@@ -53,7 +53,7 @@ namespace MedicalManagementSystem.Repository
 
                 utenti.Clear();
 
-                String queryString = "SELECT CodiceFiscale, Nome, Cognome, Residenza, DataDiNascita, Email, Sesso FROM Utenti WHERE ";
+                String queryString = "SELECT CodiceFiscale, Nome, Cognome, Residenza, DataDiNascita, Email, Sesso FROM Utenti WHERE Ruolo = 'Paziente' AND ";
                 queryString += "(@codiceFiscale IS NULL OR CodiceFiscale=@codiceFiscale) AND ";
                 queryString += "(@nome IS NULL OR Nome=@nome) AND ";
                 queryString += "(@cognome IS NULL OR Cognome=@cognome) AND ";

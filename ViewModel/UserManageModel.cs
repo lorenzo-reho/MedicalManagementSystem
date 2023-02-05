@@ -74,6 +74,7 @@ namespace MedicalManagementSystem.ViewModel
 
         private void ExecuteSearchButton(object obj)
         {
+            IsEnabledEditButton = !IsCheckedFilterButton;
             if (!(CurrentLateralPanel is SearchFilterViewModel))
                 CurrentLateralPanel = new SearchFilterViewModel();
         }
@@ -90,8 +91,8 @@ namespace MedicalManagementSystem.ViewModel
 
             IsEnabledFilterButton = !IsCheckedEditButton;
 
-            if(!(CurrentLateralPanel is SearchFilterViewModel))
-                CurrentLateralPanel = new SearchFilterViewModel();
+            if(!(CurrentLateralPanel is CreateNewUserViewModel))
+                CurrentLateralPanel = new CreateNewUserViewModel();
         }
     }
 }

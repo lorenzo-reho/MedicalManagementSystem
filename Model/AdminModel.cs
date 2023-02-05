@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MedicalManagementSystem.Model
 {
-    internal class AdminModel
+    internal class AdminModel : BaseUserModel
     {
+        public String Password { get; set; }
     }
 }

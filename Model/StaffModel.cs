@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MedicalManagementSystem.Model
 {
-    internal class PatientModel : BaseUserModel
+    internal class StaffModel : BaseUserModel
     {
 
-        // Cartella clinica ed altro
+        public String Password { get; set; }
 
     }
 }

@@ -17,6 +17,10 @@
         <DataTemplate DataType="{x:Type ViewModel:SearchFilterViewModel}">
             <local:SearchFilterView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:CreateNewUserViewModel}">
+            <local:CreateNewUserView/>
+        </DataTemplate>
+
     </UserControl.Resources>
 
     <Grid>

@@ -181,9 +181,31 @@ internal class SearchFilterViewModel : BaseViewModel
 
 
         // Sesso
+        private bool _isCheckedM;
+        private bool _isCheckedF;
         private bool _isCheckedSex;
         private bool _isEnabledSex;
-        private String _textSex;
+
+        public bool IsCheckedM
+        {
+            get { return _isCheckedM; }
+            set
+            {
+                _isCheckedM = value;
+                OnPropertyChanged(nameof(IsCheckedM));
+            }
+        }
+
+        public bool IsCheckedF
+        {
+            get { return _isCheckedF; }
+            set
+            {
+                _isCheckedF = value;
+                OnPropertyChanged(nameof(IsCheckedF));
+            }
+        }
+
         public bool IsCheckedSex
         {
             get { return _isCheckedSex; }
@@ -193,6 +215,7 @@ internal class SearchFilterViewModel : BaseViewModel
                 OnPropertyChanged(nameof(IsCheckedSex));
             }
         }
+
         public bool IsEnabledSex
         {
             get { return _isEnabledSex; }
@@ -201,16 +224,6 @@ internal class SearchFilterViewModel : BaseViewModel
                 _isEnabledSex = value;
                 OnPropertyChanged(nameof(IsEnabledSex));
             }
-        }
-        public String TextSex
-        {
-            get { return _textSex; }
-            set
-            {
-                _textSex = value;
-                OnPropertyChanged(nameof(TextSex));
-            }
-
         }
 
         public ICommand CommandCheckCodiceFiscale { get; }
@@ -237,8 +250,12 @@ internal class SearchFilterViewModel : BaseViewModel
         {
 
             userRepository = new UserRepository();
+            try
+            {
+                userRepository.FiltroUtenti(new BaseUserModel { }, UserManageModel.UsersList);
+            }
+            catch (NullReferenceException) { }
 
-            userRepository.FiltroUtenti(new BaseUserModel { }, UserManageModel.UsersList);
 
             CommandCheckCodiceFiscale = new CommandViewModel(ExecuteCheckCodiceFiscale, (o) => { return true; });
             CommandCheckNome = new CommandViewModel(ExecuteCheckNome, (o) => { return true; });
@@ -288,14 +305,20 @@ internal class SearchFilterViewModel : BaseViewModel
 
         private void ExecuteApplicaFiltro(object obj)
         {
-            userRepository.FiltroUtenti(new BaseUserModel
+
+            try
             {
-                CodiceFiscale = IsEnabledCodiceFiscale ? TextCodiceFiscale : null,
-                Nome = IsEnabledNome ? TextNome : null,
-                Cognome = IsEnabledCognome ? TextCognome : null,
-                Residenza = IsEnabledResidenza ? TextResidenza : null,
-                DataDiNascita = IsEnabledDataDiNascita ? SelectedDataDiNascita.Date.ToString("g") : null
-            }, UserManageModel.UsersList);
+                userRepository.FiltroUtenti(new BaseUserModel
+                {
+                    CodiceFiscale = IsEnabledCodiceFiscale ? TextCodiceFiscale : null,
+                    Nome = IsEnabledNome ? TextNome : null,
+                    Cognome = IsEnabledCognome ? TextCognome : null,
+                    Residenza = IsEnabledResidenza ? TextResidenza : null,
+                    DataDiNascita = IsEnabledDataDiNascita ? SelectedDataDiNascita.Date.ToString("g") : null,
+                    Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0')
+                }, UserManageModel.UsersList);
+            }
+            catch (NullReferenceException) { }
 
         }
 
