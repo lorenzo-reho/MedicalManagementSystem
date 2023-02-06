@@ -19,9 +19,9 @@ namespace MedicalManagementSystem.ViewModel
         public static ObservableCollection<BaseUserModel> UsersList { get; set; }
         private BaseViewModel _currentLateralPanel;
         private bool _isCheckedFilterButton;
-        private bool _isCheckedEditButton;
+        private bool _isCheckedAddButton;
         private bool _isEnabledFilterButton;
-        private bool _isEnabledEditButton;
+        private bool _isEnabledAddButton;
 
 
         public bool IsCheckedFilterButton
@@ -30,10 +30,10 @@ namespace MedicalManagementSystem.ViewModel
             set { _isCheckedFilterButton = value;  OnPropertyChanged(nameof(IsCheckedFilterButton)); }
         }
 
-        public bool IsCheckedEditButton
+        public bool IsCheckedAddButton
         {
-            get { return _isCheckedEditButton; }
-            set { _isCheckedEditButton = value; OnPropertyChanged(nameof(IsCheckedEditButton)); }
+            get { return _isCheckedAddButton; }
+            set { _isCheckedAddButton = value; OnPropertyChanged(nameof(IsCheckedAddButton)); }
         }
 
         public BaseViewModel CurrentLateralPanel
@@ -48,14 +48,14 @@ namespace MedicalManagementSystem.ViewModel
             set { _isEnabledFilterButton = value; OnPropertyChanged(nameof(IsEnabledFilterButton)); }
         }
 
-        public bool IsEnabledEditButton
+        public bool IsEnabledAddButton
         {
-            get { return _isEnabledEditButton; }
-            set { _isEnabledEditButton = value; OnPropertyChanged(nameof(IsEnabledEditButton)); }
+            get { return _isEnabledAddButton; }
+            set { _isEnabledAddButton = value; OnPropertyChanged(nameof(IsEnabledAddButton)); }
         }
 
 
-        public ICommand EditButtonCommand { get; }
+        public ICommand AddButtonCommand { get; }
         public ICommand SearchButtonCommand { get; }
 
         public UserManageModel() {
@@ -65,16 +65,16 @@ namespace MedicalManagementSystem.ViewModel
             UserRepository userRepository = new UserRepository();
             userRepository.FiltroUtenti(new BaseUserModel { }, UsersList);
 
-            EditButtonCommand = new CommandViewModel(ExecuteEditButton, CanExecuteEditButton);
+            AddButtonCommand = new CommandViewModel(ExecuteAddButton, CanExecuteAddButton);
             SearchButtonCommand = new CommandViewModel(ExecuteSearchButton, CanExecuteSearchButton);
 
             IsEnabledFilterButton = true;
-            IsEnabledEditButton = true;
+            IsEnabledAddButton = true;
         }
 
         private void ExecuteSearchButton(object obj)
         {
-            IsEnabledEditButton = !IsCheckedFilterButton;
+            IsEnabledAddButton = !IsCheckedFilterButton;
             if (!(CurrentLateralPanel is SearchFilterViewModel))
                 CurrentLateralPanel = new SearchFilterViewModel();
         }
@@ -84,12 +84,12 @@ namespace MedicalManagementSystem.ViewModel
             return true;
         }
 
-        private bool CanExecuteEditButton(object obj) {return true;}
+        private bool CanExecuteAddButton(object obj) {return true;}
 
-        private void ExecuteEditButton(object obj)
+        private void ExecuteAddButton(object obj)
         {
 
-            IsEnabledFilterButton = !IsCheckedEditButton;
+            IsEnabledFilterButton = !IsCheckedAddButton;
 
             if(!(CurrentLateralPanel is CreateNewUserViewModel))
                 CurrentLateralPanel = new CreateNewUserViewModel();

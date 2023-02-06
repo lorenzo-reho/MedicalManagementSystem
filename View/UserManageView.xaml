@@ -40,15 +40,8 @@
 
             <Grid Grid.Row="0" Grid.Column="0" Margin="10">
                 <StackPanel Orientation="Horizontal">
-                    <Button Width="40">
+                    <ToggleButton Width="40" Command="{Binding AddButtonCommand}" IsChecked="{Binding IsCheckedAddButton}" IsEnabled="{Binding IsEnabledAddButton}">
                         <Image Source="../Images/add.png" Width="30" Height="30"/>
-                    </Button>
-                    <Button Width="40" Margin="10,0,0,0">
-                        <Image Source="../Images/remove.png" Width="30" Height="30"/>
-                    </Button>
-
-                    <ToggleButton Width="40" Margin="10,0,0,0" Command="{Binding EditButtonCommand}" IsChecked="{Binding IsCheckedEditButton}" IsEnabled="{Binding IsEnabledEditButton}">
-                        <Image Source="../Images/edit.png" Width="30" Height="30"/>
                         <ToggleButton.Triggers>
                             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                 <BeginStoryboard>
@@ -57,7 +50,7 @@
                                                 Storyboard.TargetName="LateralPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
-                                                From="250" To="0"
+                                                From="300" To="0"
                                                 Duration="0:0:0.2">
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -70,7 +63,7 @@
                                                 Storyboard.TargetName="LateralPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
-                                                From="0" To="250"
+                                                From="0" To="300"
                                                 Duration="0:0:0.3">
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -78,6 +71,15 @@
                             </EventTrigger>
                         </ToggleButton.Triggers>
                     </ToggleButton>
+
+                    <Button Width="40" Margin="10,0,0,0">
+                        <Image Source="../Images/remove.png" Width="30" Height="30"/>
+                    </Button>
+
+                    <Button Width="40" Margin="10,0,0,0">
+                        <Image Source="../Images/edit.png" Width="30" Height="30"/>
+                    </Button>
+                    
                     <ToggleButton Width="40" Margin="10,0,0,0" Command="{Binding SearchButtonCommand}" IsChecked="{Binding IsCheckedFilterButton}" IsEnabled="{Binding IsEnabledFilterButton}">
                         <Image Source="../Images/search1.png" Width="30" Height="30"/>
 
@@ -89,7 +91,7 @@
                                                 Storyboard.TargetName="LateralPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
-                                                From="250" To="0"
+                                                From="300" To="0"
                                                 Duration="0:0:0.2">
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -102,7 +104,7 @@
                                                 Storyboard.TargetName="LateralPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
-                                                From="0" To="250"
+                                                From="0" To="300"
                                                 Duration="0:0:0.3">
                                         </DoubleAnimation>
                                     </Storyboard>

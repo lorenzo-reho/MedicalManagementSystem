@@ -287,12 +287,16 @@ internal class SearchFilterViewModel : BaseViewModel
             IsCheckedNome = false;
             IsCheckedCognome = false;
             IsCheckedResidenza = false;
+            IsCheckedF = false;
+            IsCheckedM = false;
+            IsCheckedSex = false;
             IsCheckedDataDiNascita = false;
 
             IsEnabledCodiceFiscale = false;
             IsEnabledNome = false;
             IsEnabledCognome = false;
             IsEnabledResidenza = false;
+            IsEnabledSex = false;
             IsEnabledDataDiNascita = false;
 
 

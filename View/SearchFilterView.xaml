@@ -36,9 +36,9 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Ricerca" FontWeight="Bold" Foreground="#fff" FontSize="20" Margin="10"/>
 
         <Grid Grid.Row="1" Grid.Column="0">
-            <DockPanel>
-                <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckCodiceFiscale}" IsChecked="{Binding IsCheckedCodiceFiscale}"/>
-                <Label VerticalAlignment="Center" Content="Codice Fiscale" Foreground="#ffffff"/>
+            <DockPanel Margin="6,0,0,0">
+                <CheckBox VerticalAlignment="Center" Command="{Binding CommandCheckCodiceFiscale}" IsChecked="{Binding IsCheckedCodiceFiscale}"/>
+                <Label Content="Codice Fiscale"  Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
@@ -47,9 +47,9 @@
 
 
         <Grid Grid.Row="2" Grid.Column="0">
-            <DockPanel>
-                <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckNome}" IsChecked="{Binding IsCheckedNome}" />
-                <Label VerticalAlignment="Center" Content="Nome" Foreground="#ffffff"/>
+            <DockPanel Margin="6,0,0,0">
+                <CheckBox VerticalAlignment="Center" Command="{Binding CommandCheckNome}" IsChecked="{Binding IsCheckedNome}" />
+                <Label Content="Nome"  Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
@@ -57,18 +57,18 @@
 
 
         <Grid Grid.Row="3" Grid.Column="0">
-            <DockPanel>
-                <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckCognome}" IsChecked="{Binding IsCheckedCognome}"/>
-                <Label VerticalAlignment="Center" Content="Cognome" Foreground="#ffffff"/>
+            <DockPanel Margin="6,0,0,0">
+                <CheckBox VerticalAlignment="Center" Command="{Binding CommandCheckCognome}" IsChecked="{Binding IsCheckedCognome}"/>
+                <Label Content="Cognome" Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
         <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Height="25" VerticalContentAlignment="Center" IsEnabled="{Binding IsEnabledCognome}" Text="{Binding TextCognome}"/>
 
         <Grid Grid.Row="5" Grid.Column="0">
-            <DockPanel>
-                <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckResidenza}" IsChecked="{Binding IsCheckedResidenza}"/>
-                <Label VerticalAlignment="Center" Content="Residenza" Foreground="#ffffff"/>
+            <DockPanel Margin="6,0,0,0">
+                <CheckBox VerticalAlignment="Center" Command="{Binding CommandCheckResidenza}" IsChecked="{Binding IsCheckedResidenza}"/>
+                <Label Content="Residenza" Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
@@ -76,9 +76,9 @@
 
 
         <Grid Grid.Row="6" Grid.Column="0">
-            <DockPanel>
-                <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckSesso}" IsChecked="{Binding IsCheckedSex}"/>
-                <Label VerticalAlignment="Center" Content="Sesso" Foreground="#ffffff"/>
+            <DockPanel Margin="6,0,0,0">
+                <CheckBox VerticalAlignment="Center" Command="{Binding CommandCheckSesso}" IsChecked="{Binding IsCheckedSex}"/>
+                <Label Content="Sesso" Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
@@ -93,15 +93,15 @@
         <Grid Grid.Row="7" Grid.Column="0">
             <DockPanel>
                 <CheckBox Margin="6,0,0,0" VerticalAlignment="Center" Command="{Binding CommandCheckDataDiNascita}" IsChecked="{Binding IsCheckedDataDiNascita}"/>
-                <Label VerticalAlignment="Center" Content="Data di nascita" Foreground="#ffffff"/>
+                <Label Content="Data di nascita" Style="{StaticResource SearchPanelLabel}"/>
             </DockPanel>
         </Grid>
 
         
         <DatePicker Grid.Row="7" Grid.Column="1" IsEnabled="{Binding IsEnabledDataDiNascita}" SelectedDate="{Binding SelectedDataDiNascita}"/>
 
-        <Button Grid.Row="8" Grid.Column="0" Margin="7" Content="Rimuovi" FontSize="14" Foreground="#000" Style="{StaticResource FilterBtn}" Command="{Binding CommandResetta}"/>
-        <Button Grid.Row="8" Grid.Column="1" Margin="7" Content="Applica" FontSize="14" Foreground="#000" Style="{StaticResource FilterBtn}" Command="{Binding CommandApplicaFiltro}"/>
+        <Button Grid.Row="8" Grid.Column="0" Margin="7" Content="Rimuovi" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding CommandResetta}"/>
+        <Button Grid.Row="8" Grid.Column="1" Margin="7" Content="Applica" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding CommandApplicaFiltro}"/>
 
     </Grid>
 </UserControl>

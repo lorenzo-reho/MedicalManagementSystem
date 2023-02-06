@@ -29,7 +29,7 @@ namespace MedicalManagementSystem.Model
         public String Role { get; set; }
         public char Sex { get; set; }
         public String DataDiNascita { get; set; }
-
+        public String Cellulare { get; set; }
 
     }
 }
