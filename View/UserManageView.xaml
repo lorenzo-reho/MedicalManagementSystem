@@ -40,38 +40,9 @@
 
             <Grid Grid.Row="0" Grid.Column="0" Margin="10">
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Width="40" Command="{Binding AddButtonCommand}" IsChecked="{Binding IsCheckedAddButton}" IsEnabled="{Binding IsEnabledAddButton}">
-                        <Image Source="../Images/add.png" Width="30" Height="30"/>
-                        <ToggleButton.Triggers>
-                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="HideStackPanel1">
-                                        <DoubleAnimation    
-                                                Storyboard.TargetName="LateralPanel"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="300" To="0"
-                                                Duration="0:0:0.2">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="ShowStackPanel1">
-                                        <DoubleAnimation
-                                                Storyboard.TargetName="LateralPanel"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="0" To="300"
-                                                Duration="0:0:0.3">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ToggleButton.Triggers>
-                    </ToggleButton>
 
+                    <customcontrols:ToggleButtonToolbar x:Name="AddToggleButton" ImagePath="../Images/add.png" IsCheckedButton="{Binding IsCheckedAddButton, Mode=TwoWay}" IsEnabledButton="{Binding IsEnabledAddButton}" ButtonCommand="{Binding AddButtonCommand}"/>
+                    
                     <Button Width="40" Margin="10,0,0,0">
                         <Image Source="../Images/remove.png" Width="30" Height="30"/>
                     </Button>
@@ -79,39 +50,8 @@
                     <Button Width="40" Margin="10,0,0,0">
                         <Image Source="../Images/edit.png" Width="30" Height="30"/>
                     </Button>
-                    
-                    <ToggleButton Width="40" Margin="10,0,0,0" Command="{Binding SearchButtonCommand}" IsChecked="{Binding IsCheckedFilterButton}" IsEnabled="{Binding IsEnabledFilterButton}">
-                        <Image Source="../Images/search1.png" Width="30" Height="30"/>
 
-                        <ToggleButton.Triggers>
-                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="HideStackPanel">
-                                        <DoubleAnimation    
-                                                Storyboard.TargetName="LateralPanel"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="300" To="0"
-                                                Duration="0:0:0.2">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="ShowStackPanel">
-                                        <DoubleAnimation
-                                                Storyboard.TargetName="LateralPanel"
-                                                Storyboard.TargetProperty="Width"
-                                                BeginTime="0:0:0"
-                                                From="0" To="300"
-                                                Duration="0:0:0.3">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ToggleButton.Triggers>
-                    </ToggleButton>
+                    <customcontrols:ToggleButtonToolbar x:Name="SearchToggleButton" Margin="10,0,0,0" ImagePath="../Images/search1.png" IsCheckedButton="{Binding IsCheckedFilterButton, Mode=TwoWay}" IsEnabledButton="{Binding IsEnabledFilterButton}" ButtonCommand="{Binding SearchButtonCommand}"/>
 
                 </StackPanel>
                 

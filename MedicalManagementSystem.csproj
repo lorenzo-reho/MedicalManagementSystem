@@ -66,6 +66,9 @@
     <Compile Include="CustomControls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ToggleButtonToolbar.xaml.cs">
+      <DependentUpon>ToggleButtonToolbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\BaseUserModel.cs" />
     <Compile Include="Model\DoctorModel.cs" />
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\IconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ToggleButtonToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

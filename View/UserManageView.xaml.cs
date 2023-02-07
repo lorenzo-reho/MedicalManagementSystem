@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalManagementSystem.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace MedicalManagementSystem.View
         public UserManageView()
         {
             InitializeComponent();
+
+            AddToggleButton.Target = LateralPanel;
+            SearchToggleButton.Target = LateralPanel;
+
         }
     }
 }
