@@ -3,6 +3,7 @@ using MedicalManagementSystem.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -245,6 +246,7 @@ internal class SearchFilterViewModel : BaseViewModel
             set { _currentLateralPanel = value; OnPropertyChanged(nameof(CurrentLateralPanel)); }
         }
 
+        public ObservableCollection<String> ResidenzeList { get; set; }
 
         public SearchFilterViewModel()
         {
@@ -268,6 +270,9 @@ internal class SearchFilterViewModel : BaseViewModel
 
             SelectedDataDiNascita = System.DateTime.Now;
 
+            ResidenzeList = userRepository.EstrazioneResidenze();
+
+            Debug.Write("CIAO");
         }
 
         private bool CanExecuteResetta(object obj)

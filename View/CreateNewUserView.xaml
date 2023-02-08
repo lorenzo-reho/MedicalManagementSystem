@@ -44,7 +44,8 @@
         <TextBox Grid.Row="3" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
 
         <Label Grid.Row="4" Grid.Column="0" Content="Residenza" Style="{StaticResource AddPanelLabel}"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenzeList}"/>
+        <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
 
         <Label Grid.Row="5" Grid.Column="0" Content="Data di nascita" Style="{StaticResource AddPanelLabel}"/>
         <DatePicker Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center"/>

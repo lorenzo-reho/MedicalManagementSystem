@@ -45,7 +45,6 @@ namespace MedicalManagementSystem.Repository
 
             return Tuple.Create(codiceFiscale, ruolo);
         }
-
         public void FiltroUtenti(BaseUserModel filtro, ObservableCollection<BaseUserModel> utenti) {
 
             using (SqlConnection connection = GetConnection()) {
@@ -95,6 +94,22 @@ namespace MedicalManagementSystem.Repository
                 }
             }
 
+        }
+        public ObservableCollection<String> EstrazioneResidenze() {
+            ObservableCollection<String> residenze = new ObservableCollection<String>();
+            using (SqlConnection connection = GetConnection()){
+                connection.Open();
+
+                String queryString = "SELECT DISTINCT Residenza FROM Utenti";
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+                using (SqlDataReader reader = command.ExecuteReader()) {
+                    while (reader.Read())
+                        residenze.Add(reader.GetString(0));
+                }
+
+                return residenze;
+            }
         }
     }
 }

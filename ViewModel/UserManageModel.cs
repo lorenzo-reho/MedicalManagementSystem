@@ -91,8 +91,6 @@ namespace MedicalManagementSystem.ViewModel
 
             IsEnabledFilterButton = !IsCheckedAddButton;
 
-            Debug.WriteLine(IsCheckedAddButton);
-
             if(!(CurrentLateralPanel is CreateNewUserViewModel))
                 CurrentLateralPanel = new CreateNewUserViewModel();
         }

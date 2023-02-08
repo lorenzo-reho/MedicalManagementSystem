@@ -44,7 +44,7 @@
                     <customcontrols:IconButton TextButton="Pianificazione" ImagePath="../Images/calendar.png"/>
                     <customcontrols:IconButton TextButton="Prenotazioni" ImagePath="../Images/bookings.png" Command="{Binding UserManageCommand}"/>
                     <customcontrols:IconButton TextButton="Gestione pazienti" ImagePath="../Images/user.png" Command="{Binding UserManageCommand}"/>
-                    <customcontrols:IconButton TextButton="Eventi" ImagePath="../Images/message.png"/>
+                    <customcontrols:IconButton TextButton="SMS" ImagePath="../Images/message.png"/>
                 </StackPanel>
 
                 <customcontrols:IconButton VerticalAlignment="Bottom" Margin="7,0,7,10" TextButton="Impostazioni" ImagePath="../Images/settings.png"/>
