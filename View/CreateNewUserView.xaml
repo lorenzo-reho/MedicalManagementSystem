@@ -35,37 +35,37 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Aggiungi" FontWeight="Bold" Foreground="#fff" FontSize="20" Margin="10"/>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Codice Fiscale" Style="{StaticResource AddPanelLabel}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextCodiceFiscale}"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="Nome" Style="{StaticResource AddPanelLabel}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
 
         <Label Grid.Row="3" Grid.Column="0" Content="Cognome" Style="{StaticResource AddPanelLabel}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextCognome}"/>
 
         <Label Grid.Row="4" Grid.Column="0" Content="Residenza" Style="{StaticResource AddPanelLabel}"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenzeList}"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
         <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
 
         <Label Grid.Row="5" Grid.Column="0" Content="Data di nascita" Style="{StaticResource AddPanelLabel}"/>
-        <DatePicker Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center"/>
+        <DatePicker Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding SelectedDataDiNascita}"/>
 
         <Label Grid.Row="6" Grid.Column="0" Content="Sesso" Style="{StaticResource AddPanelLabel}"/>
 
         <DockPanel Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">
-            <RadioButton Foreground="#fff" Margin="2" GroupName="Sex">M</RadioButton>
-            <RadioButton Foreground="#fff" Margin="2" GroupName="Sex">F</RadioButton>
+            <RadioButton Foreground="#fff" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedM}">M</RadioButton>
+            <RadioButton Foreground="#fff" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedF}">F</RadioButton>
         </DockPanel>
 
 
         <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Content="Email" Foreground="#ffffff" Margin="6,3,0,3"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextEmail}"/>
 
         <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Content="Telefono" Foreground="#ffffff" Margin="6,3,0,3"/>
-        <TextBox Grid.Row="8" Grid.Column="1" Margin="3"  VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Margin="3"  VerticalContentAlignment="Center" Text="{Binding TextTelefono}"/>
 
-        <Button Grid.Row="9" Grid.Column="0" Margin="7" Content="Resetta" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}"/>
-        <Button Grid.Row="9" Grid.Column="1" Margin="7" Content="Aggiungi" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}"/>
+        <Button Grid.Row="9" Grid.Column="0" Margin="7" Content="Resetta" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding ResetCommand}"/>
+        <Button Grid.Row="9" Grid.Column="1" Margin="7" Content="Aggiungi" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding AggiungiCommand}"/>
 
     </Grid>
 </UserControl>

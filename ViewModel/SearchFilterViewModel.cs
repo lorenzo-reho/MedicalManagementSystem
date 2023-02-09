@@ -239,25 +239,18 @@ internal class SearchFilterViewModel : BaseViewModel
         UserRepository userRepository;
 
         private BaseViewModel _currentLateralPanel;
-
         public BaseViewModel CurrentLateralPanel
         {
             get { return _currentLateralPanel; }
             set { _currentLateralPanel = value; OnPropertyChanged(nameof(CurrentLateralPanel)); }
         }
 
-        public ObservableCollection<String> ResidenzeList { get; set; }
+        public ObservableCollection<String> ResidenceList { get; set; }
 
         public SearchFilterViewModel()
         {
 
             userRepository = new UserRepository();
-            try
-            {
-                userRepository.FiltroUtenti(new BaseUserModel { }, UserManageModel.UsersList);
-            }
-            catch (NullReferenceException) { }
-
 
             CommandCheckCodiceFiscale = new CommandViewModel(ExecuteCheckCodiceFiscale, (o) => { return true; });
             CommandCheckNome = new CommandViewModel(ExecuteCheckNome, (o) => { return true; });
@@ -270,9 +263,8 @@ internal class SearchFilterViewModel : BaseViewModel
 
             SelectedDataDiNascita = System.DateTime.Now;
 
-            ResidenzeList = userRepository.EstrazioneResidenze();
+            ResidenceList = userRepository.EstrazioneResidenze();
 
-            Debug.Write("CIAO");
         }
 
         private bool CanExecuteResetta(object obj)
@@ -323,9 +315,10 @@ internal class SearchFilterViewModel : BaseViewModel
                     Nome = IsEnabledNome ? TextNome : null,
                     Cognome = IsEnabledCognome ? TextCognome : null,
                     Residenza = IsEnabledResidenza ? TextResidenza : null,
+                    Role="Paziente",
                     DataDiNascita = IsEnabledDataDiNascita ? SelectedDataDiNascita.Date.ToString("g") : null,
                     Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0')
-                }, UserManageModel.UsersList);
+                }, UserManageModel.PatientList);
             }
             catch (NullReferenceException) { }
 

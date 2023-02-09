@@ -16,7 +16,7 @@ namespace MedicalManagementSystem.ViewModel
     internal class UserManageModel : BaseViewModel
     {
 
-        public static ObservableCollection<BaseUserModel> UsersList { get; set; }
+        public static ObservableCollection<BaseUserModel> PatientList { get; set; }
         private BaseViewModel _currentLateralPanel;
         private bool _isCheckedFilterButton;
         private bool _isCheckedAddButton;
@@ -60,10 +60,10 @@ namespace MedicalManagementSystem.ViewModel
 
         public UserManageModel() {
             
-            UsersList = new ObservableCollection<BaseUserModel>();
+            PatientList = new ObservableCollection<BaseUserModel>();
 
             UserRepository userRepository = new UserRepository();
-            userRepository.FiltroUtenti(new BaseUserModel { }, UsersList);
+            userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
 
             AddButtonCommand = new CommandViewModel(ExecuteAddButton, CanExecuteAddButton);
             SearchButtonCommand = new CommandViewModel(ExecuteSearchButton, CanExecuteSearchButton);

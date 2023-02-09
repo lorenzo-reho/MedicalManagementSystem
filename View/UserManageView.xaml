@@ -57,7 +57,7 @@
                 
             </Grid>
 
-            <DataGrid HorizontalScrollBarVisibility="Disabled"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding UsersList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ColumnWidth="*" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid HorizontalScrollBarVisibility="Disabled"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding PatientList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ColumnWidth="*" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="CodiceFiscale" Binding="{Binding CodiceFiscale}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
