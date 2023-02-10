@@ -18,24 +18,27 @@
                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                     <BeginStoryboard>
                         <Storyboard x:Name="HideStackPanel1">
-                            <DoubleAnimation    
-                                                    Storyboard.Target="{Binding Path=Target,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-                                                    Storyboard.TargetProperty="Width"
+                            <DoubleAnimation
+                                                    Storyboard.Target="{Binding Target,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                    
                                                     BeginTime="0:0:0"
-                                                    From="300" To="0"
-                                                    Duration="0:0:0.2">
+                                                    From="-300" To="0"
+                                                    Duration="0:0:0.35">
                             </DoubleAnimation>
+
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="ToggleButton.Checked">
                     <BeginStoryboard>
-                        <Storyboard x:Name="ShowStackPanel1">
+                        <Storyboard x:Name="ShowStackPanel1" >
                             <DoubleAnimation
                                                     Storyboard.Target="{Binding Target,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-                                                    Storyboard.TargetProperty="Width"
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                    
                                                     BeginTime="0:0:0"
-                                                    From="0" To="300"
+                                                    From="0" To="-300"
                                                     Duration="0:0:0.35">
                             </DoubleAnimation>
                         </Storyboard>
