@@ -36,7 +36,7 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Aggiungi" FontWeight="Bold" Foreground="#fff" FontSize="20" Margin="10"/>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Codice Fiscale" Style="{StaticResource AddPanelLabel}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextCodiceFiscale}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="Nome" Style="{StaticResource AddPanelLabel}"/>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
@@ -63,7 +63,15 @@
         <TextBox Grid.Row="7" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextEmail}"/>
 
         <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Content="Telefono" Foreground="#ffffff" Margin="6,3,0,3"/>
-        <TextBox Grid.Row="8" Grid.Column="1" Margin="3"  VerticalContentAlignment="Center" Text="{Binding TextTelefono}"/>
+        <DockPanel Grid.Row="8" Grid.Column="1" >
+            <ComboBox Margin="3" Width="55" HorizontalContentAlignment="Center" Text="{Binding TextPrefisso}">
+                <ComboBoxItem Content="+39"/>
+                <ComboBoxItem Content="+44"/>
+                <ComboBoxItem Content="+35"/>
+            </ComboBox>
+            <TextBox Margin="3" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" Text="{Binding TextTelefono, UpdateSourceTrigger=PropertyChanged}"/>
+        </DockPanel>
+        
 
         <Button Grid.Row="9" Grid.Column="0" Margin="7" Content="Resetta" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding ResetCommand}"/>
         <Button Grid.Row="9" Grid.Column="1" Margin="7" Content="Aggiungi" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding AggiungiCommand}"/>

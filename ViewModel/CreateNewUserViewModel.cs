@@ -3,6 +3,7 @@ using MedicalManagementSystem.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +95,16 @@ namespace MedicalManagementSystem.ViewModel
             set { _textTelefono = value; OnPropertyChanged(nameof(TextTelefono)); }
         }
 
+        // Residenza
+        private String _textPrefisso;
+
+        public String TextPrefisso
+        {
+            get { return _textPrefisso; }
+            set { _textPrefisso = value; OnPropertyChanged(nameof(TextPrefisso)); }
+        }
+
+
         public ICommand AggiungiCommand { get; }
         public ICommand ResetCommand { get; }
 
@@ -111,7 +122,17 @@ namespace MedicalManagementSystem.ViewModel
 
         private void ExecuteReset(object obj)
         {
-            
+            TextCodiceFiscale = null;
+            TextNome = null;
+            TextCognome = null;
+            TextResidenza = null;
+            TextEmail = null;
+            TextTelefono = null;
+            TextPrefisso = null;
+            IsCheckedF = false;
+            IsCheckedM = false;
+            SelectedDataDiNascita = System.DateTime.Now;
+
         }
 
         private bool CanExecuteReset(object obj)
@@ -121,11 +142,20 @@ namespace MedicalManagementSystem.ViewModel
 
         private bool CanExecuteAggiungi(object obj)
         {
-            return true;
+            String Telefono = TextPrefisso + TextTelefono;
+
+            return (
+                
+                UsefulChecks.CheckTelefono(Telefono) &&
+                UsefulChecks.CheckEmail(TextEmail) &&
+                UsefulChecks.CheckCodiceFiscale(TextCodiceFiscale)
+                
+                );
         }
 
         private void ExecuteAggiungi(object obj)
         {
+            
             userRepository.AggiungiUtente(new BaseUserModel {
                 CodiceFiscale = TextCodiceFiscale,
                 Nome=TextNome,
@@ -135,7 +165,7 @@ namespace MedicalManagementSystem.ViewModel
                 Role = "Paziente",
                 DataDiNascita = SelectedDataDiNascita.Date.ToString("g"),
                 Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0'),
-                Telefono = TextTelefono,
+                Telefono = TextPrefisso+TextTelefono,
                 Email = TextEmail
             });
 

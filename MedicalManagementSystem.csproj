@@ -77,6 +77,7 @@
     <Compile Include="Repository\CryptoRepository.cs" />
     <Compile Include="Repository\DBRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\UsefulChecks.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CommandViewModel.cs" />
