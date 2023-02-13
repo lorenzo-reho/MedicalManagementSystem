@@ -29,5 +29,6 @@ namespace MedicalManagementSystem.View
             SearchToggleButton.Target = LateralPanel;
 
         }
+
     }
 }

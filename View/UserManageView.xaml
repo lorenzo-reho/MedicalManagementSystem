@@ -57,7 +57,7 @@
                 
             </Grid>
 
-            <DataGrid HorizontalScrollBarVisibility="Disabled"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding PatientList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ColumnWidth="*" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid HorizontalScrollBarVisibility="Disabled"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding PatientList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ColumnWidth="*"  IsReadOnly="True" AutoGenerateColumns="False"  VirtualizingStackPanel.VirtualizationMode="Recycling">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="CodiceFiscale" Binding="{Binding CodiceFiscale}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
@@ -71,7 +71,7 @@
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
-            <ContentPresenter Width="300" Margin="0,0,-300,0" x:Name="LateralPanel" Content="{Binding CurrentLateralPanel}">
+            <ContentPresenter Width="0" Margin="0,0,0,0" x:Name="LateralPanel" Content="{Binding CurrentLateralPanel}">
                 <ContentPresenter.RenderTransform>
                     <TranslateTransform/>
                 </ContentPresenter.RenderTransform>

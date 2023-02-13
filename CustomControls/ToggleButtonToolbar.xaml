@@ -20,11 +20,11 @@
                         <Storyboard x:Name="HideStackPanel1">
                             <DoubleAnimation
                                                     Storyboard.Target="{Binding Target,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                    Storyboard.TargetProperty="Width"
                                                     
                                                     BeginTime="0:0:0"
-                                                    From="-300" To="0"
-                                                    Duration="0:0:0.35">
+                                                    From="300" To="0"
+                                                    Duration="0:0:0.0">
                             </DoubleAnimation>
 
                         </Storyboard>
@@ -35,11 +35,11 @@
                         <Storyboard x:Name="ShowStackPanel1" >
                             <DoubleAnimation
                                                     Storyboard.Target="{Binding Target,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                    Storyboard.TargetProperty="Width"
                                                     
                                                     BeginTime="0:0:0"
-                                                    From="0" To="-300"
-                                                    Duration="0:0:0.35">
+                                                    From="0" To="300"
+                                                    Duration="0:0:0.0">
                             </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
