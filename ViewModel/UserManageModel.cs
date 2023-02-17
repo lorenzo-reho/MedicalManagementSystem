@@ -60,7 +60,7 @@ namespace MedicalManagementSystem.ViewModel
 
         private readonly NavigationStore _navigationStore;
 
-        public UserManageModel(NavigationStore navigationStore, Func<DashboardViewModel> CreateDashboardViewModel) {
+        public UserManageModel(NavigationStore navigationStore, Func<UserDetailViewModel> CreateUserDetailViewModel) {
             _navigationStore = navigationStore;
 
             PatientList = new ObservableCollection<BaseUserModel>();
@@ -68,7 +68,7 @@ namespace MedicalManagementSystem.ViewModel
             UserRepository userRepository = new UserRepository();
             userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
 
-            AddButtonCommand = new NavigationCommand(_navigationStore, CreateDashboardViewModel);
+            AddButtonCommand = new NavigationCommand(_navigationStore, CreateUserDetailViewModel);
             SearchButtonCommand = new CommandViewModel(ExecuteSearchButton, CanExecuteSearchButton);
 
             IsEnabledFilterButton = true;

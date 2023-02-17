@@ -46,7 +46,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="Codice Fiscale" Style="{StaticResource AddPanelLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Codice Fiscale" Style="{StaticResource AddPanelLabel}" Foreground="#000"/>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="Nome" Style="{StaticResource AddPanelLabel}"/>

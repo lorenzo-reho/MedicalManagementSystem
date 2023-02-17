@@ -19,6 +19,10 @@
             <local:UserManageView/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type ViewModel:UserDetailViewModel}">
+            <local:UserDetailView/>
+        </DataTemplate>
+
     </Window.Resources>
 
     <Border>
