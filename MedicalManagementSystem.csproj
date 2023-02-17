@@ -79,12 +79,15 @@
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UsefulChecks.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Stores\TestStore.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CommandViewModel.cs" />
     <Compile Include="ViewModel\CreateNewUserViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\NavigationCommand.cs" />
     <Compile Include="ViewModel\SearchFilterViewModel.cs" />
     <Compile Include="ViewModel\UserManageModel.cs" />
     <Compile Include="View\CreateNewUserView.xaml.cs">
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="View\SearchFilterView.xaml.cs">
       <DependentUpon>SearchFilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserDetailView.xaml.cs">
+      <DependentUpon>UserDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserManageView.xaml.cs">
       <DependentUpon>UserManageView.xaml</DependentUpon>
@@ -146,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SearchFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,6 +226,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\profile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\noimage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

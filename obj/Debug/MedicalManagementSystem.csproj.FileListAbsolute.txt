@@ -37,3 +37,5 @@ C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\Medica
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\CreateNewUserView.baml
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\CustomControls\ToggleButtonToolbar.g.cs
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\CustomControls\ToggleButtonToolbar.baml
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\UserDetailView.g.cs
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\View\UserDetailView.baml

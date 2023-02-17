@@ -6,12 +6,9 @@
              xmlns:local="clr-namespace:MedicalManagementSystem.View"
              xmlns:ViewModel="clr-namespace:MedicalManagementSystem.ViewModel"
              xmlns:customcontrols="clr-namespace:MedicalManagementSystem.CustomControls"
+             d:DataContext="{d:DesignInstance Type=ViewModel:UserManageModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.DataContext>
-        <ViewModel:UserManageModel />
-    </UserControl.DataContext>
 
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type ViewModel:SearchFilterViewModel}">

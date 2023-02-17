@@ -6,7 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using MedicalManagementSystem.Stores;
 using MedicalManagementSystem.View;
+using MedicalManagementSystem.ViewModel;
 
 namespace MedicalManagementSystem
 {
@@ -16,11 +18,21 @@ namespace MedicalManagementSystem
     public partial class App : Application
     {
 
+        private NavigationStore _navigationStore;
+
         protected void ApplicationStart(object sender, StartupEventArgs args) {
             
             InitializeComponent();
 
-            HomeView homeView = new HomeView();
+            _navigationStore = new NavigationStore();
+
+            // navigationStore.CurrentViewModel = new UserManageModel(navigationStore);
+
+            HomeView homeView = new HomeView() {
+                DataContext = new HomeViewModel(_navigationStore, CreateDashboardViewModel, CreateUserManageViewModel)
+            
+            };
+           
             homeView.Show();
             /*
             LoginView loginView = new LoginView();
@@ -42,5 +54,14 @@ namespace MedicalManagementSystem
             };
             */
         }
+
+        private DashboardViewModel CreateDashboardViewModel()
+        {
+            return new DashboardViewModel(_navigationStore);
+        }
+        private UserManageModel CreateUserManageViewModel() {
+            return new UserManageModel(_navigationStore, CreateDashboardViewModel);   
+        }
+
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\App.xaml
-102064168846
+11-15489696
 
-331251309422
+37-1678309593
 16-2067514924
-CustomControls\BindablePasswordBox.xaml;CustomControls\IconButton.xaml;CustomControls\ToggleButtonToolbar.xaml;MainWindow.xaml;View\CreateNewUserView.xaml;View\DashboardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\SearchFilterView.xaml;View\UserManageView.xaml;
+CustomControls\BindablePasswordBox.xaml;CustomControls\IconButton.xaml;CustomControls\ToggleButtonToolbar.xaml;MainWindow.xaml;View\CreateNewUserView.xaml;View\DashboardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\SearchFilterView.xaml;View\UserDetailView.xaml;View\UserManageView.xaml;
 
 True
 

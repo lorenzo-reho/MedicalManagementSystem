@@ -1,5 +1,6 @@
 ﻿using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Repository;
+using MedicalManagementSystem.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,6 @@ namespace MedicalManagementSystem.ViewModel
         private bool _isCheckedAddButton;
         private bool _isEnabledFilterButton;
         private bool _isEnabledAddButton;
-
 
         public bool IsCheckedFilterButton
         {
@@ -58,14 +58,17 @@ namespace MedicalManagementSystem.ViewModel
         public ICommand AddButtonCommand { get; }
         public ICommand SearchButtonCommand { get; }
 
-        public UserManageModel() {
-            
+        private readonly NavigationStore _navigationStore;
+
+        public UserManageModel(NavigationStore navigationStore, Func<DashboardViewModel> CreateDashboardViewModel) {
+            _navigationStore = navigationStore;
+
             PatientList = new ObservableCollection<BaseUserModel>();
 
             UserRepository userRepository = new UserRepository();
             userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
 
-            AddButtonCommand = new CommandViewModel(ExecuteAddButton, CanExecuteAddButton);
+            AddButtonCommand = new NavigationCommand(_navigationStore, CreateDashboardViewModel);
             SearchButtonCommand = new CommandViewModel(ExecuteSearchButton, CanExecuteSearchButton);
 
             IsEnabledFilterButton = true;
@@ -91,8 +94,12 @@ namespace MedicalManagementSystem.ViewModel
 
             IsEnabledFilterButton = !IsCheckedAddButton;
 
+            _navigationStore.CurrentViewModel = new DashboardViewModel(_navigationStore);
+
+            /*
             if(!(CurrentLateralPanel is CreateNewUserViewModel))
                 CurrentLateralPanel = new CreateNewUserViewModel();
+            */
         }
     }
 }

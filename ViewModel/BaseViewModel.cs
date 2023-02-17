@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MedicalManagementSystem.ViewModel
 {
-    internal class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged; // In C# gli eventi possono essere rappresentati come oggetti
         

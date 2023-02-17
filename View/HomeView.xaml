@@ -10,10 +10,6 @@
         mc:Ignorable="d"
         Title="HomeView" Height="700" Width="1300">
 
-    <Window.DataContext>
-        <ViewModel:HomeViewModel />
-    </Window.DataContext>
-
     <Window.Resources>
         <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
             <local:DashboardView/>
@@ -26,6 +22,9 @@
     </Window.Resources>
 
     <Border>
+        <Border.Resources>
+            
+        </Border.Resources>
         <Grid>
         
             <Grid.ColumnDefinitions>
@@ -53,6 +52,8 @@
 
             <!-- MainView-->
             <Grid Grid.Row="0" Grid.Column="1">
+                
+
                 <ContentPresenter Content="{Binding CurrentViewModel}" Grid.RowSpan="5"/>
             </Grid>
         </Grid>

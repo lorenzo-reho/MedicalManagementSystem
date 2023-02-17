@@ -48,7 +48,7 @@
         <ComboBox Grid.Row="4" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
         <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Data di nascita" Style="{StaticResource AddPanelLabel}"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Data di nascita" Style="{StaticResource AddPanelLabel}" Margin="6,7,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <DatePicker Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding SelectedDataDiNascita}"/>
 
         <Label Grid.Row="6" Grid.Column="0" Content="Sesso" Style="{StaticResource AddPanelLabel}"/>
@@ -71,7 +71,7 @@
             </ComboBox>
             <TextBox Margin="3" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" Text="{Binding TextTelefono, UpdateSourceTrigger=PropertyChanged}"/>
         </DockPanel>
-        
+
 
         <Button Grid.Row="9" Grid.Column="0" Margin="7" Content="Resetta" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding ResetCommand}"/>
         <Button Grid.Row="9" Grid.Column="1" Margin="7" Content="Aggiungi" FontSize="14" Foreground="#000" Style="{StaticResource SidePanelButton}" Command="{Binding AggiungiCommand}"/>

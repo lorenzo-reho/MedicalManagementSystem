@@ -1,5 +1,6 @@
 ﻿using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Repository;
+using MedicalManagementSystem.Stores;
 using MedicalManagementSystem.View;
 using System;
 using System.Collections.Generic;
@@ -14,35 +15,28 @@ namespace MedicalManagementSystem.ViewModel
     internal class HomeViewModel : BaseViewModel
     {
 
-        private BaseViewModel _currentViewModel;
+        // private BaseViewModel _currentViewModel;
+
+        private NavigationStore _navigationStore;
+
         public BaseViewModel CurrentViewModel
         {
-            get { return _currentViewModel; }
-            set {
-                _currentViewModel = value;
-                OnPropertyChanged(nameof(CurrentViewModel));
-            }
+            get { return _navigationStore.CurrentViewModel; }
         }
+        
 
         public ICommand UserManageCommand { get; } 
         public ICommand DashboardCommand { get; }
 
-        public HomeViewModel() {
-            CurrentViewModel = new UserManageModel();
+        public HomeViewModel(NavigationStore navigationStore, Func<DashboardViewModel> CreateDashboardViewModel, Func<UserManageModel> CreateUserManageViewModel) {
+            _navigationStore = navigationStore;
+            // CurrentViewModel = new UserManageModel();
+            UserManageCommand = new NavigationCommand(_navigationStore, CreateUserManageViewModel);
+            // DashboardCommand = new CommandViewModel(ExecuteDashboardCommand, CanExecuteDashboardCommand);
 
+            DashboardCommand = new NavigationCommand(_navigationStore, CreateDashboardViewModel);
 
-            UserManageCommand = new CommandViewModel(ExecuteUserManageCommand, CanExecuteUserManageCommand);
-            DashboardCommand = new CommandViewModel(ExecuteDashboardCommand, CanExecuteDashboardCommand);
-        }
-
-        private bool CanExecuteDashboardCommand(object obj)
-        {
-            return !(CurrentViewModel is DashboardViewModel);
-        }
-
-        private void ExecuteDashboardCommand(object obj)
-        {
-            CurrentViewModel = new DashboardViewModel();
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
         private bool CanExecuteUserManageCommand(object obj)
@@ -52,7 +46,14 @@ namespace MedicalManagementSystem.ViewModel
 
         private void ExecuteUserManageCommand(object obj)
         {
-            CurrentViewModel = new UserManageModel();
+            // CurrentViewModel = new UserManageModel();
+            // _navigationStore.CurrentViewModel = new UserManageModel(_navigationStore);
+
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

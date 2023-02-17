@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalManagementSystem.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,10 @@ namespace MedicalManagementSystem.ViewModel
     internal class DashboardViewModel : BaseViewModel
     {
 
+        private readonly NavigationStore _navigationStore;
 
+        public DashboardViewModel(NavigationStore navigationStore) {
+            _navigationStore = navigationStore;
+        }
     }
 }
