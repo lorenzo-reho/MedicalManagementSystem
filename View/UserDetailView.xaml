@@ -12,20 +12,20 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Grid.Column="0">
+        
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"  MaxWidth="700"/>
             </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Row="0" Grid.Column="0" Margin="10">
-                <Image Width="200" Source="../Images/profile.jpg"/>
-            </Grid>
-
+            <Border BorderBrush="#7d7d7d" BorderThickness="2">
+                <Grid Grid.Row="0" Grid.Column="0" Margin="10" >
+                    <Image Width="200" Source="../Images/profile.jpg" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
             <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -35,62 +35,72 @@
                 <Grid Grid.Row="0" Grid.Column="0" Margin="10">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="Codice Fiscale" Style="{StaticResource AddPanelLabel}" Foreground="#000"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="CODICE FISCALE" Style="{StaticResource UserDetailLabel}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Nome" Style="{StaticResource AddPanelLabel}"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="NOME" Style="{StaticResource UserDetailLabel}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
 
-                    <Label Grid.Row="2" Grid.Column="0" Content="Cognome" Style="{StaticResource AddPanelLabel}"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextCognome}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="COGNOME" Style="{StaticResource UserDetailLabel}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextCognome}"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Residenza" Style="{StaticResource AddPanelLabel}"/>
-                    <ComboBox Grid.Row="3" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="RESIDENZA" Style="{StaticResource UserDetailLabel}"/>
+                    <ComboBox Grid.Row="3" Grid.Column="1" Margin="2" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
                     <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
-                    <Label Grid.Row="4" Grid.Column="0" Content="Data di nascita" Style="{StaticResource AddPanelLabel}" Margin="6,7,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="DATA DI NASCITA" Style="{StaticResource UserDetailLabel}" Margin="0,0,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
                     <DatePicker Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding SelectedDataDiNascita}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="SESSO" Style="{StaticResource UserDetailLabel}"/>
+                    <DockPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                        <RadioButton Foreground="#000" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedM}">M</RadioButton>
+                        <RadioButton Foreground="#000" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedF}">F</RadioButton>
+                    </DockPanel>
+
+                    <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Content="EMAIL" Style="{StaticResource UserDetailLabel}"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextEmail}"/>
 
                 </Grid>
                 
                 <Grid Grid.Row="0" Grid.Column="1" Margin="10">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="Sesso" Style="{StaticResource AddPanelLabel}"/>
-
-                    <DockPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                        <RadioButton Foreground="#fff" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedM}">M</RadioButton>
-                        <RadioButton Foreground="#fff" Margin="2" GroupName="Sex" IsChecked="{Binding IsCheckedF}">F</RadioButton>
-                    </DockPanel>
-
-
-                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Email" Foreground="#ffffff" Margin="6,3,0,3"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextEmail}"/>
-
-                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="Telefono" Foreground="#ffffff" Margin="6,3,0,3"/>
-                    <DockPanel Grid.Row="3" Grid.Column="1" >
-                        <ComboBox Margin="3" Width="55" HorizontalContentAlignment="Center" Text="{Binding TextPrefisso}">
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="TELEFONO" Style="{StaticResource UserDetailLabel}" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.616"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <DockPanel Grid.Row="0" Grid.Column="1" >
+                        <ComboBox Margin="3" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding TextPrefisso}">
                             <ComboBoxItem Content="+39"/>
                             <ComboBoxItem Content="+44"/>
                             <ComboBoxItem Content="+35"/>
