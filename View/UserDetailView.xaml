@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MedicalManagementSystem.View"
+             xmlns:ViewModel="clr-namespace:MedicalManagementSystem.ViewModel"
+             d:DataContext="{d:DesignInstance Type=ViewModel:UserDetailViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -14,14 +16,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <Button Width="40" Margin="10,0,0,0" Command="{Binding CreateCommand}">
+                    <Image Source="../Images/tick.png" Width="30" Height="30"/>
+                </Button>
+
+                <Button Width="40" Margin="10,0,0,0" Command="{Binding CancelCommand}">
+                    <Image Source="../Images/cancel.png" Width="30" Height="30"/>
+                </Button>
+
+
+            </StackPanel>
+        </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">
+        <Grid Grid.Row="1" Grid.Column="0" Background="#fff">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"  MaxWidth="700"/>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="#7d7d7d" BorderThickness="2">
+            <Border BorderBrush="#fff" BorderThickness="2">
                 <Grid Grid.Row="0" Grid.Column="0" Margin="10" >
                     <Image Width="200" Source="../Images/profile.jpg" VerticalAlignment="Center"/>
                 </Grid>
@@ -35,13 +53,13 @@
                 <Grid Grid.Row="0" Grid.Column="0" Margin="10">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -50,19 +68,19 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" Content="CODICE FISCALE" Style="{StaticResource UserDetailLabel}"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" CharacterCasing="Upper" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="NOME" Style="{StaticResource UserDetailLabel}"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextNome}"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Content="COGNOME" Style="{StaticResource UserDetailLabel}"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextCognome}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextCognome}"/>
 
                     <Label Grid.Row="3" Grid.Column="0" Content="RESIDENZA" Style="{StaticResource UserDetailLabel}"/>
-                    <ComboBox Grid.Row="3" Grid.Column="1" Margin="2" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
+                    <ComboBox Grid.Row="3" Grid.Column="1" Margin="3" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding ResidenceList}" Text="{Binding TextResidenza}"/>
                     <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
                     <Label Grid.Row="4" Grid.Column="0" Content="DATA DI NASCITA" Style="{StaticResource UserDetailLabel}" Margin="0,0,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-                    <DatePicker Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding SelectedDataDiNascita}"/>
+                    <DatePicker Grid.Row="4" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" SelectedDate="{Binding SelectedDataDiNascita}"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Content="SESSO" Style="{StaticResource UserDetailLabel}"/>
                     <DockPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
@@ -71,17 +89,13 @@
                     </DockPanel>
 
                     <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Content="EMAIL" Style="{StaticResource UserDetailLabel}"/>
-                    <TextBox Grid.Row="6" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" Text="{Binding TextEmail}"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding TextEmail, UpdateSourceTrigger=PropertyChanged}"/>
 
                 </Grid>
                 
                 <Grid Grid.Row="0" Grid.Column="1" Margin="10">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="0"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
                         <RowDefinition Height="35"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -105,7 +119,7 @@
                             <ComboBoxItem Content="+44"/>
                             <ComboBoxItem Content="+35"/>
                         </ComboBox>
-                        <TextBox Margin="3" VerticalContentAlignment="Center" Text="{Binding TextTelefono, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Margin="3" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" Text="{Binding TextTelefono, UpdateSourceTrigger=PropertyChanged}"/>
                     </DockPanel>
 
 
@@ -115,7 +129,7 @@
 
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="2" Grid.Column="0">
 
         </Grid>
 

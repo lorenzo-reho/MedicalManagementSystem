@@ -61,12 +61,13 @@ namespace MedicalManagementSystem
         }
 
         private UserDetailViewModel CreateUserDetailViewModel() {
-            return new UserDetailViewModel(_navigationStore);
+            return new UserDetailViewModel(_navigationStore, CreateUserManageViewModel);
         }
 
         private UserManageModel CreateUserManageViewModel() {
             return new UserManageModel(_navigationStore, CreateUserDetailViewModel);   
         }
+
 
     }
 }

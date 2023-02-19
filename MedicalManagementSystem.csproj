@@ -88,7 +88,6 @@
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\NavigationCommand.cs" />
-    <Compile Include="ViewModel\NavigatioStore.cs" />
     <Compile Include="ViewModel\SearchFilterViewModel.cs" />
     <Compile Include="ViewModel\UserDetailViewModel.cs" />
     <Compile Include="ViewModel\UserManageModel.cs" />
@@ -234,6 +233,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\noimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
