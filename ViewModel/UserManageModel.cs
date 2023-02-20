@@ -96,6 +96,7 @@ namespace MedicalManagementSystem.ViewModel
 
         private void ExecuteEditCommand(object obj)
         {
+
             EditButtonCommand.Obj = _userRepository.GetUserByCodiceFiscale(SelectedUserModel.CodiceFiscale);
 
             EditButtonCommand.Navigate();

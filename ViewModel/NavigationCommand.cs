@@ -11,7 +11,6 @@ namespace MedicalManagementSystem.ViewModel
         private readonly NavigationStore _navigationStore;
         private readonly Func<object, BaseViewModel> _createViewModel;
      
-        private readonly object _obj;
         public object Obj { get; set; }
 
         private readonly Action<object> _ExecuteCommand;
