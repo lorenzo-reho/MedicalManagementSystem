@@ -2,13 +2,8 @@
 using MedicalManagementSystem.Repository;
 using MedicalManagementSystem.Stores;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
@@ -23,6 +18,8 @@ namespace MedicalManagementSystem.ViewModel
         private bool _isCheckedAddButton;
         private bool _isEnabledFilterButton;
         private bool _isEnabledAddButton;
+        private bool _isEnabledEditButton;
+
 
         public bool IsCheckedFilterButton
         {
@@ -53,31 +50,65 @@ namespace MedicalManagementSystem.ViewModel
             get { return _isEnabledAddButton; }
             set { _isEnabledAddButton = value; OnPropertyChanged(nameof(IsEnabledAddButton)); }
         }
+        public bool IsEnabledEditButton
+        {
+            get { return _isEnabledEditButton; }
+            set { _isEnabledEditButton = value; OnPropertyChanged(nameof(IsEnabledEditButton)); }
+        }
 
-
-        public ICommand AddButtonCommand { get; }
+        public NavigationCommand AddButtonCommand { get; }
         public ICommand SearchButtonCommand { get; }
+        public NavigationCommand EditButtonCommand { get; }
 
         private readonly NavigationStore _navigationStore;
 
-        public UserManageModel(NavigationStore navigationStore, Func<UserDetailViewModel> CreateUserDetailViewModel) {
+        private BaseUserModel _selectedUserModel;
+
+        public BaseUserModel SelectedUserModel
+        {
+            get { return _selectedUserModel; }
+            set { _selectedUserModel = value; OnPropertyChanged(nameof(SelectedUserModel)); }
+        }
+
+        private UserRepository _userRepository;
+
+        public UserManageModel(NavigationStore navigationStore, Func<object, UserDetailViewModel> CreateUserDetailViewModel) {
             _navigationStore = navigationStore;
 
             PatientList = new ObservableCollection<BaseUserModel>();
 
-            UserRepository userRepository = new UserRepository();
-            userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
+            SelectedUserModel = new BaseUserModel();
 
-            AddButtonCommand = new NavigationCommand(_navigationStore, CreateUserDetailViewModel);
+            _userRepository = new UserRepository();
+            _userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
+
+
+            AddButtonCommand = new NavigationCommand(_navigationStore, ExecuteAddCommand, CreateUserDetailViewModel);
             SearchButtonCommand = new CommandViewModel(ExecuteSearchButton, CanExecuteSearchButton);
+
+            EditButtonCommand = new NavigationCommand(_navigationStore, ExecuteEditCommand, CreateUserDetailViewModel);
+
 
             IsEnabledFilterButton = true;
             IsEnabledAddButton = true;
+            IsEnabledEditButton = true;
+        }
+
+        private void ExecuteEditCommand(object obj)
+        {
+            EditButtonCommand.Obj = _userRepository.GetUserByCodiceFiscale(SelectedUserModel.CodiceFiscale);
+
+            EditButtonCommand.Navigate();
+        }
+
+        private void ExecuteAddCommand(object obj)
+        {
+            AddButtonCommand.Navigate();
         }
 
         private void ExecuteSearchButton(object obj)
         {
-            IsEnabledAddButton = !IsCheckedFilterButton;
+
             if (!(CurrentLateralPanel is SearchFilterViewModel))
                 CurrentLateralPanel = new SearchFilterViewModel();
         }
@@ -87,19 +118,5 @@ namespace MedicalManagementSystem.ViewModel
             return true;
         }
 
-        private bool CanExecuteAddButton(object obj) {return true;}
-
-        private void ExecuteAddButton(object obj)
-        {
-
-            IsEnabledFilterButton = !IsCheckedAddButton;
-
-            _navigationStore.CurrentViewModel = new DashboardViewModel(_navigationStore);
-
-            /*
-            if(!(CurrentLateralPanel is CreateNewUserViewModel))
-                CurrentLateralPanel = new CreateNewUserViewModel();
-            */
-        }
     }
 }

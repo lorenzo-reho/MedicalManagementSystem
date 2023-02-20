@@ -25,7 +25,6 @@ namespace MedicalManagementSystem.View
         {
             InitializeComponent();
 
-            AddToggleButton.Target = LateralPanel;
             SearchToggleButton.Target = LateralPanel;
 
         }

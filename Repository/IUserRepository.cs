@@ -20,6 +20,7 @@ namespace MedicalManagementSystem.Repository
 
         Tuple<string, string> AutenticazioneUtente(NetworkCredential networkCredential);
         void FiltroUtenti(BaseUserModel filtro, ObservableCollection<BaseUserModel> utenti);
+        BaseUserModel GetUserByCodiceFiscale(String codiceFiscale);
         ObservableCollection<String> EstrazioneResidenze();
         bool AggiungiUtente(BaseUserModel utente);
 

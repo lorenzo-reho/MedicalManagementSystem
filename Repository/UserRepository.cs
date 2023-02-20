@@ -157,5 +157,43 @@ namespace MedicalManagementSystem.Repository
 
             }
         }
+
+        public BaseUserModel GetUserByCodiceFiscale(string codiceFiscale)
+        {
+
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                String queryString = "SELECT CodiceFiscale, Nome, Cognome, Email, Username, Ruolo, DataDiNascita, Residenza, Sesso, Telefono FROM Utenti WHERE CodiceFiscale=@codiceFiscale";
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+                command.Parameters.Add("@codiceFiscale", System.Data.SqlDbType.VarChar);
+                command.Parameters["@codiceFiscale"].Value = string.IsNullOrEmpty(codiceFiscale) ? (object)DBNull.Value : codiceFiscale;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                        return new BaseUserModel()
+                        {
+
+                            CodiceFiscale = reader.IsDBNull(0) ? null : reader.GetString(0),
+                            Nome = reader.IsDBNull(1) ? null : reader.GetString(1),
+                            Cognome = reader.IsDBNull(2) ? null : reader.GetString(2),
+                            Email = reader.IsDBNull(3) ? null : reader.GetString(3),
+                            UserName = reader.IsDBNull(4) ? null : reader.GetString(4),
+                            Role = reader.IsDBNull(5) ? null : reader.GetString(5),
+                            DataDiNascita = reader.IsDBNull(6) ? null : reader.GetDateTime(6).Date.ToString("d"),
+                            Residenza = reader.IsDBNull(7) ? null : reader.GetString(7),
+                            Sex = reader.IsDBNull(8) ? '\0' : reader.GetString(8).ToCharArray()[0],
+                            Telefono = reader.IsDBNull(9) ? null : reader.GetString(9)
+
+                        };
+                        
+                }
+                return null;
+            }
+
+        }
     }
 }

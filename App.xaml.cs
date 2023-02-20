@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Stores;
 using MedicalManagementSystem.View;
 using MedicalManagementSystem.ViewModel;
@@ -55,16 +56,16 @@ namespace MedicalManagementSystem
             */
         }
 
-        private DashboardViewModel CreateDashboardViewModel()
+        private DashboardViewModel CreateDashboardViewModel(object obj)
         {
             return new DashboardViewModel(_navigationStore);
         }
 
-        private UserDetailViewModel CreateUserDetailViewModel() {
-            return new UserDetailViewModel(_navigationStore, CreateUserManageViewModel);
+        private UserDetailViewModel CreateUserDetailViewModel(object obj) {
+            return new UserDetailViewModel(_navigationStore, CreateUserManageViewModel, (BaseUserModel) obj);
         }
 
-        private UserManageModel CreateUserManageViewModel() {
+        private UserManageModel CreateUserManageViewModel(object obj) {
             return new UserManageModel(_navigationStore, CreateUserDetailViewModel);   
         }
 

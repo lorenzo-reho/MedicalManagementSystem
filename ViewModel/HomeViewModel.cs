@@ -25,18 +25,23 @@ namespace MedicalManagementSystem.ViewModel
         }
         
 
-        public ICommand UserManageCommand { get; } 
-        public ICommand DashboardCommand { get; }
+        public NavigationCommand UserManageCommand { get; } 
+        public NavigationCommand DashboardCommand { get; }
 
-        public HomeViewModel(NavigationStore navigationStore, Func<DashboardViewModel> CreateDashboardViewModel, Func<UserManageModel> CreateUserManageViewModel) {
+        public HomeViewModel(NavigationStore navigationStore, Func<object, DashboardViewModel> CreateDashboardViewModel, Func<object, UserManageModel> CreateUserManageViewModel) {
             _navigationStore = navigationStore;
             // CurrentViewModel = new UserManageModel();
-            UserManageCommand = new NavigationCommand(_navigationStore, CreateUserManageViewModel);
+            UserManageCommand = new NavigationCommand(_navigationStore, ExecuteUserManageCommand, CreateUserManageViewModel, null);
             // DashboardCommand = new CommandViewModel(ExecuteDashboardCommand, CanExecuteDashboardCommand);
 
-            DashboardCommand = new NavigationCommand(_navigationStore, CreateDashboardViewModel);
+            DashboardCommand = new NavigationCommand(_navigationStore, ExecuteDashboardCommand, CreateDashboardViewModel, null);
 
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void ExecuteDashboardCommand(object obj)
+        {
+            DashboardCommand.Navigate();
         }
 
         private bool CanExecuteUserManageCommand(object obj)
@@ -46,9 +51,7 @@ namespace MedicalManagementSystem.ViewModel
 
         private void ExecuteUserManageCommand(object obj)
         {
-            // CurrentViewModel = new UserManageModel();
-            // _navigationStore.CurrentViewModel = new UserManageModel(_navigationStore);
-
+            UserManageCommand.Navigate();
         }
 
         private void OnCurrentViewModelChanged()

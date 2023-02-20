@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -30,7 +30,6 @@
                     <Image Source="../Images/cancel.png" Width="30" Height="30"/>
                 </Button>
 
-
             </StackPanel>
         </Grid>
         
@@ -39,9 +38,9 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"  MaxWidth="700"/>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="#fff" BorderThickness="2">
-                <Grid Grid.Row="0" Grid.Column="0" Margin="10" >
-                    <Image Width="200" Source="../Images/profile.jpg" VerticalAlignment="Center"/>
+            <Border BorderBrush="#616060" BorderThickness="2" Margin="10,0,0,0">
+                <Grid Grid.Row="0" Grid.Column="0" >
+                    <Image Width="200" Source="../Images/noimage2.png" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
             <Grid Grid.Row="0" Grid.Column="1">

@@ -4,6 +4,7 @@ using MedicalManagementSystem.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,20 +109,37 @@ namespace MedicalManagementSystem.ViewModel
         }
 
 
-        public ICommand CancelCommand { get; }
+        public NavigationCommand CancelCommand { get; }
         public ICommand CreateCommand { get; }
 
-        public UserDetailViewModel(NavigationStore navigationStore, Func<UserManageModel> CreateUserManageViewModel) {
+        private BaseUserModel _baseUserModel;
+
+        public UserDetailViewModel(NavigationStore navigationStore, Func<object, UserManageModel> CreateUserManageViewModel, BaseUserModel baseUserModel) {
             _navigationStore = navigationStore;
 
             userRepository = new UserRepository();
             ResidenceList = userRepository.EstrazioneResidenze();
 
             CreateCommand = new CommandViewModel(ExecuteCreateCommand, CanExecuteCreateCommand);
-            CancelCommand = new NavigationCommand(_navigationStore, CreateUserManageViewModel);
+            CancelCommand = new NavigationCommand(_navigationStore, ExecuteCancelCommand, CreateUserManageViewModel, null);
 
-            SelectedDataDiNascita = System.DateTime.Now;
+            _baseUserModel = baseUserModel ?? new BaseUserModel();
 
+            TextCodiceFiscale = _baseUserModel.CodiceFiscale;
+            TextNome = _baseUserModel.Nome;
+            TextCognome = _baseUserModel.Cognome;
+            TextResidenza = _baseUserModel.Residenza;
+            TextTelefono = _baseUserModel.Telefono;
+            TextEmail = _baseUserModel.Email;
+            IsCheckedF = _baseUserModel.Sex == 'F';
+            IsCheckedM = _baseUserModel.Sex == 'M';
+            SelectedDataDiNascita = _baseUserModel.DataDiNascita == null ? System.DateTime.Now : Convert.ToDateTime(_baseUserModel.DataDiNascita);
+
+        }
+
+        private void ExecuteCancelCommand(object obj)
+        {
+            CancelCommand.Navigate();
         }
 
         private bool CanExecuteCreateCommand(object obj)
@@ -143,7 +161,7 @@ namespace MedicalManagementSystem.ViewModel
 
             string messageBoxText = "Vuoi salvare le modifiche?";
             string caption = "Avviso";
-            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxButton button = MessageBoxButton.YesNo;
             MessageBoxImage icon = MessageBoxImage.Warning;
             MessageBoxResult result;
 
