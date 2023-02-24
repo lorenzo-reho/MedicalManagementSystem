@@ -2,7 +2,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Net;
 
 namespace MedicalManagementSystem.Repository
@@ -23,31 +22,36 @@ namespace MedicalManagementSystem.Repository
             String ruolo = null;
 
 
-            using (SqlConnection connection = GetConnection()) {
+            using (SqlConnection connection = GetConnection())
+            {
                 connection.Open();
                 SqlCommand command = new SqlCommand(queryString, connection);
-                
+
                 // Metodi di prevenzione per SQL INJECTION
-                
+
                 command.Parameters.Add("@uname", System.Data.SqlDbType.VarChar);
                 command.Parameters.Add("@password", System.Data.SqlDbType.Binary); // la password non viene salvata come stringa ma come binary
                 command.Parameters["@uname"].Value = networkCredential.UserName;
                 command.Parameters["@password"].Value = CryptoRepository.Hash(networkCredential.Password);
 
-                using (SqlDataReader reader = command.ExecuteReader()) {
-                    while (reader.Read()) {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
                         codiceFiscale = reader.GetString(0);
                         ruolo = reader.GetString(3);
                     }
                 }
-                
+
             }
 
             return Tuple.Create(codiceFiscale, ruolo);
         }
-        public void FiltroUtenti(BaseUserModel filtro, ObservableCollection<BaseUserModel> utenti) {
+        public void FiltroUtenti(BaseUserModel filtro, ObservableCollection<BaseUserModel> utenti)
+        {
 
-            using (SqlConnection connection = GetConnection()) {
+            using (SqlConnection connection = GetConnection())
+            {
                 connection.Open();
 
                 utenti.Clear();
@@ -79,7 +83,8 @@ namespace MedicalManagementSystem.Repository
                 command.Parameters["@sesso"].Value = filtro.Sex == '\0' ? (object)DBNull.Value : filtro.Sex;
 
 
-                using (SqlDataReader reader = command.ExecuteReader()) {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
                     while (reader.Read())
                     {
                         utenti.Add(new BaseUserModel
@@ -97,15 +102,18 @@ namespace MedicalManagementSystem.Repository
             }
 
         }
-        public ObservableCollection<String> EstrazioneResidenze() {
+        public ObservableCollection<String> EstrazioneResidenze()
+        {
             ObservableCollection<String> residenze = new ObservableCollection<String>();
-            using (SqlConnection connection = GetConnection()){
+            using (SqlConnection connection = GetConnection())
+            {
                 connection.Open();
 
                 String queryString = "SELECT DISTINCT Residenza FROM Utenti";
                 SqlCommand command = new SqlCommand(queryString, connection);
 
-                using (SqlDataReader reader = command.ExecuteReader()) {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
                     while (reader.Read())
                         residenze.Add(reader.IsDBNull(0) ? null : reader.GetString(0));
                 }
@@ -157,7 +165,7 @@ namespace MedicalManagementSystem.Repository
 
             }
         }
-
+        
         public BaseUserModel GetUserByCodiceFiscale(string codiceFiscale)
         {
 
@@ -189,9 +197,58 @@ namespace MedicalManagementSystem.Repository
                             Telefono = reader.IsDBNull(9) ? null : reader.GetString(9)
 
                         };
-                        
+
+
                 }
                 return null;
+            }
+
+        }
+
+        public bool AggiornaUtente(BaseUserModel utente)
+        {
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                String queryString = "UPDATE Utenti SET Nome = @nome,Cognome = @cognome,Email = @email,UserName = @username,Ruolo = @ruolo,DataDiNascita = @dataDiNascita,Sesso = @sesso,Telefono = @telefono,residenza = @residenza WHERE CodiceFiscale = @codiceFiscale";
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+
+                command.Parameters.Add("@codiceFiscale", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@nome", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@cognome", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@ruolo", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@dataDiNascita", System.Data.SqlDbType.Date);
+                command.Parameters.Add("@residenza", System.Data.SqlDbType.VarChar);
+                command.Parameters.Add("@sesso", System.Data.SqlDbType.Char);
+                command.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar);
+
+                command.Parameters["@codiceFiscale"].Value = string.IsNullOrEmpty(utente.CodiceFiscale) ? (object)DBNull.Value : utente.CodiceFiscale;
+                command.Parameters["@nome"].Value = string.IsNullOrEmpty(utente.Nome) ? (object)DBNull.Value : utente.Nome;
+                command.Parameters["@cognome"].Value = string.IsNullOrEmpty(utente.Cognome) ? (object)DBNull.Value : utente.Cognome;
+                command.Parameters["@email"].Value = string.IsNullOrEmpty(utente.Email) ? (object)DBNull.Value : utente.Email;
+                command.Parameters["@username"].Value = string.IsNullOrEmpty(utente.UserName) ? (object)DBNull.Value : utente.UserName;
+                command.Parameters["@ruolo"].Value = string.IsNullOrEmpty(utente.Role) ? (object)DBNull.Value : utente.Role;
+                command.Parameters["@dataDiNascita"].Value = string.IsNullOrEmpty(utente.DataDiNascita) ? (object)DBNull.Value : utente.DataDiNascita;
+                command.Parameters["@residenza"].Value = string.IsNullOrEmpty(utente.Residenza) ? (object)DBNull.Value : utente.Residenza;
+                command.Parameters["@sesso"].Value = utente.Sex == '\0' ? (object)DBNull.Value : utente.Sex;
+                command.Parameters["@telefono"].Value = string.IsNullOrEmpty(utente.Telefono) ? (object)DBNull.Value : utente.Telefono;
+                
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (SqlException)
+                {
+                    return false;
+                }
+
+
             }
 
         }

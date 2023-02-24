@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace MedicalManagementSystem.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged; // In C# gli eventi possono essere rappresentati come oggetti
-        
+
         // Questo metodo va chiamato ogni volta che viene modificata una proprietà dal ViewModel
         // per notificare la modifica alla view
-        public void OnPropertyChanged(string obj) {
+        public void OnPropertyChanged(string obj)
+        {
 
             // Esame:
             // 1) PropertyChanged è l'handler dell'evento

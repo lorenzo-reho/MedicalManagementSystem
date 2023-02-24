@@ -1,12 +1,7 @@
 ﻿using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Repository;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
@@ -109,7 +104,8 @@ namespace MedicalManagementSystem.ViewModel
         public ICommand ResetCommand { get; }
 
 
-        public CreateNewUserViewModel() {
+        public CreateNewUserViewModel()
+        {
 
             userRepository = new UserRepository();
             ResidenceList = userRepository.EstrazioneResidenze();
@@ -145,27 +141,28 @@ namespace MedicalManagementSystem.ViewModel
             String Telefono = TextPrefisso + TextTelefono;
 
             return (
-                
+
                 UsefulChecks.CheckTelefono(Telefono) &&
                 UsefulChecks.CheckEmail(TextEmail) &&
                 UsefulChecks.CheckCodiceFiscale(TextCodiceFiscale)
-                
+
                 );
         }
 
         private void ExecuteAggiungi(object obj)
         {
-            
-            userRepository.AggiungiUtente(new BaseUserModel {
+
+            userRepository.AggiungiUtente(new BaseUserModel
+            {
                 CodiceFiscale = TextCodiceFiscale,
-                Nome=TextNome,
+                Nome = TextNome,
                 UserName = TextNome,
-                Cognome=TextCognome,
-                Residenza=TextResidenza,
+                Cognome = TextCognome,
+                Residenza = TextResidenza,
                 Role = "Paziente",
                 DataDiNascita = SelectedDataDiNascita.Date.ToString("g"),
                 Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0'),
-                Telefono = TextPrefisso+TextTelefono,
+                Telefono = TextPrefisso + TextTelefono,
                 Email = TextEmail
             });
 

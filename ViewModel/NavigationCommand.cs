@@ -1,6 +1,5 @@
 ﻿using MedicalManagementSystem.Stores;
 using System;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
@@ -10,7 +9,7 @@ namespace MedicalManagementSystem.ViewModel
         public event EventHandler CanExecuteChanged;
         private readonly NavigationStore _navigationStore;
         private readonly Func<object, BaseViewModel> _createViewModel;
-     
+
         public object Obj { get; set; }
 
         private readonly Action<object> _ExecuteCommand;
@@ -23,14 +22,16 @@ namespace MedicalManagementSystem.ViewModel
             _ExecuteCommand = ExecuteCommand;
         }
 
-        public NavigationCommand(NavigationStore navigationStore, Action<object> ExecuteCommand, Func<object,BaseViewModel> createViewModel, object obj) { 
+        public NavigationCommand(NavigationStore navigationStore, Action<object> ExecuteCommand, Func<object, BaseViewModel> createViewModel, object obj)
+        {
             _navigationStore = navigationStore;
             _createViewModel = createViewModel;
             Obj = obj;
             _ExecuteCommand = ExecuteCommand;
         }
 
-        public void Navigate() {
+        public void Navigate()
+        {
             _navigationStore.CurrentViewModel = _createViewModel(Obj);
         }
 

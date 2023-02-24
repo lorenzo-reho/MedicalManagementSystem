@@ -2,12 +2,7 @@
 using MedicalManagementSystem.Repository;
 using MedicalManagementSystem.Stores;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,13 +12,20 @@ namespace MedicalManagementSystem.ViewModel
     {
 
         private readonly NavigationStore _navigationStore;
-        
+
         public UserRepository userRepository;
         public ObservableCollection<String> ResidenceList { get; set; }
 
 
         // Codice Fiscale
         private String _textCodiceFiscale;
+        private bool _isCodiceFiscaleEnabled;
+
+        public bool IsCodiceFiscaleEnabled
+        {
+            get { return _isCodiceFiscaleEnabled; }
+            set { _isCodiceFiscaleEnabled = value; OnPropertyChanged(nameof(IsCodiceFiscaleEnabled)); }
+        }
 
         public String TextCodiceFiscale
         {
@@ -114,7 +116,10 @@ namespace MedicalManagementSystem.ViewModel
 
         private BaseUserModel _baseUserModel;
 
-        public UserDetailViewModel(NavigationStore navigationStore, Func<object, UserManageModel> CreateUserManageViewModel, BaseUserModel baseUserModel) {
+        private bool _createMode = true;
+
+        public UserDetailViewModel(NavigationStore navigationStore, Func<object, UserManageModel> CreateUserManageViewModel, BaseUserModel baseUserModel)
+        {
             _navigationStore = navigationStore;
 
             userRepository = new UserRepository();
@@ -122,6 +127,10 @@ namespace MedicalManagementSystem.ViewModel
 
             CreateCommand = new CommandViewModel(ExecuteCreateCommand, CanExecuteCreateCommand);
             CancelCommand = new NavigationCommand(_navigationStore, ExecuteCancelCommand, CreateUserManageViewModel, null);
+
+
+            _createMode = baseUserModel == null;
+            IsCodiceFiscaleEnabled = _createMode;
 
             _baseUserModel = baseUserModel ?? new BaseUserModel();
 
@@ -158,18 +167,7 @@ namespace MedicalManagementSystem.ViewModel
         private void ExecuteCreateCommand(object obj)
         {
 
-
-            string messageBoxText = "Vuoi salvare le modifiche?";
-            string caption = "Avviso";
-            MessageBoxButton button = MessageBoxButton.YesNo;
-            MessageBoxImage icon = MessageBoxImage.Warning;
-            MessageBoxResult result;
-
-            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-
-            if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel) return;
-
-            bool success = userRepository.AggiungiUtente(new BaseUserModel
+            BaseUserModel newBaseUserModel = new BaseUserModel
             {
                 CodiceFiscale = TextCodiceFiscale,
                 Nome = TextNome,
@@ -181,16 +179,29 @@ namespace MedicalManagementSystem.ViewModel
                 Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0'),
                 Telefono = TextPrefisso + TextTelefono,
                 Email = TextEmail
-            });
+            };
 
+            string messageBoxText = "Vuoi salvare le modifiche?";
+            string caption = "Avviso";
+            MessageBoxButton button = MessageBoxButton.YesNo;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult result;
 
-            if (!success) {
+            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+
+            if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel) return;
+
+            bool success = _createMode ? userRepository.AggiungiUtente(newBaseUserModel) : userRepository.AggiornaUtente(newBaseUserModel);
+
+            if (!success)
+            {
                 MessageBox.Show("Qualcosa è andato storto", "Errore", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else {
+            else
+            {
                 MessageBox.Show("Salvataggio avvenuto con successo", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
+            
         }
     }
 }

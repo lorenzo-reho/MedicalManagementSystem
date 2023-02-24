@@ -1,6 +1,5 @@
-C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\MedicalManagementSystem.exe.config
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\MedicalManagementSystem.exe
-C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\MedicalManagementSystem.pdb
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\MedicalManagementSystem.exe.config
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\FontAwesome.WPF.dll
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\FontAwesome.WPF.xml
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\MedicalManagementSystem.csproj.AssemblyReference.cache
@@ -39,3 +38,4 @@ C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\Medica
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\MedicalManagementSystem.csproj.CopyComplete
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\MedicalManagementSystem.exe
 C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\obj\Debug\MedicalManagementSystem.pdb
+C:\Users\loren\Desktop\Hospital Management System\MedicalManagementSystem\MedicalManagementSystem\bin\Debug\MedicalManagementSystem.pdb

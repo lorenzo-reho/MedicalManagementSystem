@@ -3,7 +3,6 @@ using MedicalManagementSystem.Repository;
 using MedicalManagementSystem.Stores;
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
@@ -24,7 +23,7 @@ namespace MedicalManagementSystem.ViewModel
         public bool IsCheckedFilterButton
         {
             get { return _isCheckedFilterButton; }
-            set { _isCheckedFilterButton = value;  OnPropertyChanged(nameof(IsCheckedFilterButton)); }
+            set { _isCheckedFilterButton = value; OnPropertyChanged(nameof(IsCheckedFilterButton)); }
         }
 
         public bool IsCheckedAddButton
@@ -72,7 +71,8 @@ namespace MedicalManagementSystem.ViewModel
 
         private UserRepository _userRepository;
 
-        public UserManageModel(NavigationStore navigationStore, Func<object, UserDetailViewModel> CreateUserDetailViewModel) {
+        public UserManageModel(NavigationStore navigationStore, Func<object, UserDetailViewModel> CreateUserDetailViewModel)
+        {
             _navigationStore = navigationStore;
 
             PatientList = new ObservableCollection<BaseUserModel>();
@@ -80,7 +80,7 @@ namespace MedicalManagementSystem.ViewModel
             SelectedUserModel = new BaseUserModel();
 
             _userRepository = new UserRepository();
-            _userRepository.FiltroUtenti(new BaseUserModel { Role="Paziente" }, PatientList);
+            _userRepository.FiltroUtenti(new BaseUserModel { Role = "Paziente" }, PatientList);
 
 
             AddButtonCommand = new NavigationCommand(_navigationStore, ExecuteAddCommand, CreateUserDetailViewModel);

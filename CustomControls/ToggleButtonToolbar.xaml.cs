@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MedicalManagementSystem.CustomControls
 {
@@ -27,7 +17,7 @@ namespace MedicalManagementSystem.CustomControls
         public static readonly DependencyProperty ImagePathProperty =
             DependencyProperty.Register("ImagePath", typeof(ImageSource), typeof(ToggleButtonToolbar), new UIPropertyMetadata(null));
 
-        public static readonly DependencyProperty IsCheckedButtonProperty=
+        public static readonly DependencyProperty IsCheckedButtonProperty =
             DependencyProperty.Register("IsCheckedButton", typeof(bool), typeof(ToggleButtonToolbar), new UIPropertyMetadata(null));
 
         public static readonly DependencyProperty IsEnabledButtonProperty =

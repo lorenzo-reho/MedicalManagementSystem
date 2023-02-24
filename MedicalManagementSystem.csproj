@@ -249,5 +249,35 @@
   <ItemGroup>
     <Resource Include="Images\noimage2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\apply1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\left-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\left-arrow1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

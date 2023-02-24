@@ -8,7 +8,7 @@
              d:DataContext="{d:DesignInstance Type=ViewModel:UserDetailViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1300">
-    <Grid>
+    <Grid Background="#eee">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -19,15 +19,15 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Grid Grid.Row="0" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6">
 
-                <Button Width="40" Margin="10,0,0,0" Command="{Binding CreateCommand}">
-                    <Image Source="../Images/tick.png" Width="30" Height="30"/>
+                <Button Margin="0,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding CancelCommand}" VerticalContentAlignment="Center">
+                    <Image Source="../Images/left-arrow1.png" Height="25"/>
                 </Button>
 
-                <Button Width="40" Margin="10,0,0,0" Command="{Binding CancelCommand}">
-                    <Image Source="../Images/cancel.png" Width="30" Height="30"/>
+                <Button Width="40" Margin="10,0,0,0" Command="{Binding CreateCommand}">
+                    <Image Source="../Images/apply1.png" Width="35" Height="35"/>
                 </Button>
 
             </StackPanel>
@@ -76,7 +76,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="CODICE FISCALE" Style="{StaticResource UserDetailLabel}"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="3" CharacterCasing="Upper"  Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UserDetailTextBox}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="3" CharacterCasing="Upper" IsEnabled="{Binding IsCodiceFiscaleEnabled}" Text="{Binding TextCodiceFiscale, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UserDetailTextBox}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="NOME" Style="{StaticResource UserDetailLabel}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding TextNome}" Style="{StaticResource UserDetailTextBox}"/>
@@ -85,8 +85,8 @@
                         <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding TextCognome}" Style="{StaticResource UserDetailTextBox}"/>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="RESIDENZA" Style="{StaticResource UserDetailLabel}"/>
-                        <ComboBox Grid.Row="3" Grid.Column="1" Margin="3" FontSize="14" IsEditable="True" ItemsSource="{Binding ResidenceList}" HorizontalContentAlignment="Left" Text="{Binding TextResidenza}"  Style="{StaticResource UserDetailComboBox}"/>
-                        <!--<TextBox Grid.Row="4" Grid.Column="1" Margin="3" VerticalContentAlignment="Center"/>-->
+                        <ComboBox Grid.Row="3" Grid.Column="1" Margin="3" IsEditable="True" ItemsSource="{Binding ResidenceList}" HorizontalContentAlignment="Left" Text="{Binding TextResidenza}"  Style="{StaticResource UserDetailComboBox}"/>
+                        
                         <Label Grid.Row="4" Grid.Column="0" Content="DATA DI NASCITA" Style="{StaticResource UserDetailLabel}" Margin="0,0,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
                         <DatePicker Grid.Row="4" Grid.Column="1" FontSize="14" Margin="2" SelectedDate="{Binding SelectedDataDiNascita}"/>
 
@@ -141,7 +141,7 @@
         <Expander Grid.Row="2" 
                   Grid.Column="0" 
                   Name="MedicalRecords" 
-                  Header="Cartella clinica" 
+                  Header="Cartella Clinica" 
                   FontSize="17" 
                   Foreground="#616060" 
                   BorderThickness="2"

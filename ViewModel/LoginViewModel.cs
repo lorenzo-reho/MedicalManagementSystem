@@ -1,11 +1,10 @@
-﻿using System.Diagnostics;
-using System.Security;
-using System.Windows.Input;
-using System.Threading;
-using System.Net;
-using MedicalManagementSystem.Repository;
+﻿using MedicalManagementSystem.Repository;
 using System;
+using System.Net;
+using System.Security;
 using System.Security.Principal;
+using System.Threading;
+using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
 {
@@ -19,17 +18,21 @@ namespace MedicalManagementSystem.ViewModel
         private bool _isViewVisible = true;
         private String _errorText;
 
-        public string Username {
+        public string Username
+        {
             get { return _username; }
-            set { 
+            set
+            {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
             }
         }
 
-        public SecureString Password {
+        public SecureString Password
+        {
             get { return _password; }
-            set { 
+            set
+            {
                 _password = value;
                 OnPropertyChanged(nameof(Password));
             }
@@ -37,16 +40,19 @@ namespace MedicalManagementSystem.ViewModel
 
         public bool IsViewVisible
         {
-            get { return _isViewVisible;  }
-            set {
+            get { return _isViewVisible; }
+            set
+            {
                 _isViewVisible = value;
                 OnPropertyChanged(nameof(IsViewVisible));
             }
         }
 
-        public String ErrorText { 
+        public String ErrorText
+        {
             get { return _errorText; }
-            set { 
+            set
+            {
                 _errorText = value;
                 OnPropertyChanged(nameof(ErrorText));
             }
@@ -58,17 +64,20 @@ namespace MedicalManagementSystem.ViewModel
         public UserRepository userRepository;
 
 
-        public LoginViewModel() {
+        public LoginViewModel()
+        {
 
             LoginCommand = new CommandViewModel(ExecuteLoginCommand, CanExecuteLoginCommand);
             userRepository = new UserRepository();
         }
 
-        public bool CanExecuteLoginCommand(object obj) {
+        public bool CanExecuteLoginCommand(object obj)
+        {
             return Password != null && Password.Length >= 8 && Username != null && Username.Length > 0;
         }
 
-        public void ExecuteLoginCommand(object obj) {
+        public void ExecuteLoginCommand(object obj)
+        {
             Tuple<string, string> res = userRepository.AutenticazioneUtente(new NetworkCredential(Username, Password));
 
             if (res.Item1 == null || res.Item2 == null)
@@ -76,7 +85,7 @@ namespace MedicalManagementSystem.ViewModel
                 ErrorText = "Username o Password errati!";
                 return;
             }
-            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(res.Item1), new string[]{res.Item2});
+            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(res.Item1), new string[] { res.Item2 });
 
             IsViewVisible = false;
 

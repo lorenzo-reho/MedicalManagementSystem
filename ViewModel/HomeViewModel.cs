@@ -1,14 +1,5 @@
-﻿using MedicalManagementSystem.Model;
-using MedicalManagementSystem.Repository;
-using MedicalManagementSystem.Stores;
-using MedicalManagementSystem.View;
+﻿using MedicalManagementSystem.Stores;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
 {
@@ -23,12 +14,13 @@ namespace MedicalManagementSystem.ViewModel
         {
             get { return _navigationStore.CurrentViewModel; }
         }
-        
 
-        public NavigationCommand UserManageCommand { get; } 
+
+        public NavigationCommand UserManageCommand { get; }
         public NavigationCommand DashboardCommand { get; }
 
-        public HomeViewModel(NavigationStore navigationStore, Func<object, DashboardViewModel> CreateDashboardViewModel, Func<object, UserManageModel> CreateUserManageViewModel) {
+        public HomeViewModel(NavigationStore navigationStore, Func<object, DashboardViewModel> CreateDashboardViewModel, Func<object, UserManageModel> CreateUserManageViewModel)
+        {
             _navigationStore = navigationStore;
             // CurrentViewModel = new UserManageModel();
             UserManageCommand = new NavigationCommand(_navigationStore, ExecuteUserManageCommand, CreateUserManageViewModel, null);
@@ -46,7 +38,7 @@ namespace MedicalManagementSystem.ViewModel
 
         private bool CanExecuteUserManageCommand(object obj)
         {
-            return (!(CurrentViewModel is UserManageModel)) ;
+            return (!(CurrentViewModel is UserManageModel));
         }
 
         private void ExecuteUserManageCommand(object obj)

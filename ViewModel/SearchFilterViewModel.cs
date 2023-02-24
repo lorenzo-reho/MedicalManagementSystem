@@ -1,18 +1,13 @@
 ﻿using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Repository;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MedicalManagementSystem.ViewModel
 {
-internal class SearchFilterViewModel : BaseViewModel
-{
+    internal class SearchFilterViewModel : BaseViewModel
+    {
 
         // Codice Fiscale
         private bool _isCheckedCodiceFiscale;
@@ -315,7 +310,7 @@ internal class SearchFilterViewModel : BaseViewModel
                     Nome = IsEnabledNome ? TextNome : null,
                     Cognome = IsEnabledCognome ? TextCognome : null,
                     Residenza = IsEnabledResidenza ? TextResidenza : null,
-                    Role="Paziente",
+                    Role = "Paziente",
                     DataDiNascita = IsEnabledDataDiNascita ? SelectedDataDiNascita.Date.ToString("g") : null,
                     Sex = IsCheckedF ? 'F' : (IsCheckedM ? 'M' : '\0')
                 }, UserManageModel.PatientList);

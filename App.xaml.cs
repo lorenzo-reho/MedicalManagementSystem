@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using MedicalManagementSystem.Model;
+﻿using MedicalManagementSystem.Model;
 using MedicalManagementSystem.Stores;
 using MedicalManagementSystem.View;
 using MedicalManagementSystem.ViewModel;
+using System.Windows;
 
 namespace MedicalManagementSystem
 {
@@ -21,19 +14,21 @@ namespace MedicalManagementSystem
 
         private NavigationStore _navigationStore;
 
-        protected void ApplicationStart(object sender, StartupEventArgs args) {
-            
+        protected void ApplicationStart(object sender, StartupEventArgs args)
+        {
+
             InitializeComponent();
 
             _navigationStore = new NavigationStore();
 
             // navigationStore.CurrentViewModel = new UserManageModel(navigationStore);
 
-            HomeView homeView = new HomeView() {
+            HomeView homeView = new HomeView()
+            {
                 DataContext = new HomeViewModel(_navigationStore, CreateDashboardViewModel, CreateUserManageViewModel)
-            
+
             };
-           
+
             homeView.Show();
             /*
             LoginView loginView = new LoginView();
@@ -61,12 +56,14 @@ namespace MedicalManagementSystem
             return new DashboardViewModel(_navigationStore);
         }
 
-        private UserDetailViewModel CreateUserDetailViewModel(object obj) {
-            return new UserDetailViewModel(_navigationStore, CreateUserManageViewModel, (BaseUserModel) obj);
+        private UserDetailViewModel CreateUserDetailViewModel(object obj)
+        {
+            return new UserDetailViewModel(_navigationStore, CreateUserManageViewModel, (BaseUserModel)obj);
         }
 
-        private UserManageModel CreateUserManageViewModel(object obj) {
-            return new UserManageModel(_navigationStore, CreateUserDetailViewModel);   
+        private UserManageModel CreateUserManageViewModel(object obj)
+        {
+            return new UserManageModel(_navigationStore, CreateUserDetailViewModel);
         }
 
 

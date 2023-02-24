@@ -1,9 +1,4 @@
 ﻿using MedicalManagementSystem.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalManagementSystem.ViewModel
 {
@@ -12,7 +7,8 @@ namespace MedicalManagementSystem.ViewModel
 
         private readonly NavigationStore _navigationStore;
 
-        public DashboardViewModel(NavigationStore navigationStore) {
+        public DashboardViewModel(NavigationStore navigationStore)
+        {
             _navigationStore = navigationStore;
         }
     }

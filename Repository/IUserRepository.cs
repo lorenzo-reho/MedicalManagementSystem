@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MedicalManagementSystem.Model;
+using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-using MedicalManagementSystem.Model;
 
 
 namespace MedicalManagementSystem.Repository
@@ -23,6 +18,8 @@ namespace MedicalManagementSystem.Repository
         BaseUserModel GetUserByCodiceFiscale(String codiceFiscale);
         ObservableCollection<String> EstrazioneResidenze();
         bool AggiungiUtente(BaseUserModel utente);
+        bool AggiornaUtente(BaseUserModel utente);
+
 
     }
 }
