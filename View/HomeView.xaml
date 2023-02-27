@@ -6,6 +6,7 @@
         xmlns:customcontrols="clr-namespace:MedicalManagementSystem.CustomControls"
         xmlns:ViewModel="clr-namespace:MedicalManagementSystem.ViewModel"
         xmlns:local="clr-namespace:MedicalManagementSystem.View"
+        d:DataContext="{d:DesignInstance Type=ViewModel:HomeViewModel}"
         Background="#eee"
         mc:Ignorable="d"
         Title="HomeView" Height="700" Width="1300">
@@ -32,17 +33,21 @@
         <Grid>
         
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             
             <!-- SIDEBAR -->
-            <Grid Grid.Row="0" Grid.Column="0"
-              Background="#333333">
+            <Grid x:Name="LateralPanel1" Grid.Row="0" Grid.Column="0"
+              Background="#333333" Width="56">
+                
+                <customcontrols:ToggleButtonSidebar x:Name="MenuToggleButton" ImagePath="../Images/menu.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,7,7,0"/>
+                
                 <StackPanel Orientation="Vertical"
                         VerticalAlignment="Center"
                         Margin="7,0,7,0">
+
                     <customcontrols:IconButton TextButton="Dashboard" ImagePath="../Images/home.png" Command="{Binding DashboardCommand}"/>
                     <customcontrols:IconButton TextButton="Pianificazione" ImagePath="../Images/calendar.png"/>
                     <customcontrols:IconButton TextButton="Prenotazioni" ImagePath="../Images/bookings.png" Command="{Binding UserManageCommand}"/>

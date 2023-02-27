@@ -11,17 +11,16 @@
     <Border CornerRadius="10"
             Style="{StaticResource MenuIconBtn}">
         <StackPanel Orientation="Horizontal">
-       
-            <Image Width="26" Margin="6,6,0,6" Source="{Binding ImagePath,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"/>
 
             <Button
-            x:Name="customBtn"
-            Content="{Binding TextButton,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-            Style="{StaticResource MenuBtn}"
-            Command="{Binding Command,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"
-            Margin="10,0,0,0"
-            />
-            
+                   Style="{StaticResource MenuBtn}"
+                   Command="{Binding Command,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="28" Margin="6,6,0,6" Source="{Binding ImagePath,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"/>
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding TextButton,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}}}"/>
+                </StackPanel>
+            </Button>
+
         </StackPanel>
     </Border>
 </UserControl>

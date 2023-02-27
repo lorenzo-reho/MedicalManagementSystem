@@ -66,6 +66,9 @@
     <Compile Include="CustomControls\IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ToggleButtonSidebar.xaml.cs">
+      <DependentUpon>ToggleButtonSidebar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\ToggleButtonToolbar.xaml.cs">
       <DependentUpon>ToggleButtonToolbar.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\IconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ToggleButtonSidebar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +285,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\left-arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

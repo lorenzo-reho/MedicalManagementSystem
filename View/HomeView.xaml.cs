@@ -10,6 +10,9 @@ namespace MedicalManagementSystem.View
         public HomeView()
         {
             InitializeComponent();
+
+            MenuToggleButton.Target = LateralPanel1;
+
         }
     }
 }

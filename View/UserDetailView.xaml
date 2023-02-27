@@ -23,7 +23,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6">
 
                 <Button Margin="0,0,0,0" Background="Transparent" BorderThickness="0" Command="{Binding CancelCommand}" VerticalContentAlignment="Center">
-                    <Image Source="../Images/left-arrow1.png" Height="25"/>
+                    <Image Source="../Images/left-arrow1.png" Height="20"/>
                 </Button>
 
                 <Button Width="40" Margin="10,0,0,0" Command="{Binding CreateCommand}">
@@ -38,6 +38,7 @@
                   Name="PatientDetails" 
                   Header="Dettagli Paziente" 
                   FontSize="17" 
+                  IsExpanded="True"
                   Foreground="#616060" 
                   BorderThickness="2"
                   BorderBrush="#c7c7c7"
